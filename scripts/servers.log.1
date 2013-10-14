@@ -1,0 +1,2105 @@
+-2              Configuration loaded from file: paxos.properties
+28              [p0] localhost, ports = (replica=2021, client=3001)
+28              [p1] localhost, ports = (replica=2022, client=3002)
+46              Property not found: MayShareSnapshots. Using default value: true
+48              Processes:
+  [p0] localhost, ports = (replica=2021, client=3001)
+  [p1] localhost, ports = (replica=2022, client=3002)
+Properties:
+  BatchSize=65507
+  BenchmarkRunClient=false
+  BenchmarkRunReplica=false
+  ClientIDGenerator=TimeBased
+  CrashModel=CrashStop
+  FDSendTimeout=500
+  FDSuspectTimeout=1000
+  FirstSnapshotEstimateBytes=1024
+  LogPath=jpaxosLogs
+  MaxBatchDelay=10
+  MaxUDPPacketSize=65507
+  MinLogSizeForRatioCheckBytes=10240
+  MinimumInstancesForSnapshotRatioSample=50
+  Network=TCP
+  PeriodicCatchupMilisecs=2000
+  RetransmitTimeoutMilisecs=1000
+  SnapshotAskRatio=1.0
+  SnapshotForceRatio=2.0
+  TcpReconnectMilisecs=1000
+  WindowSize=2
+  process.0=localhost:2021:3001
+  process.1=localhost:2022:3002
+  replica.ClientBatchAckTimeout=50
+  replica.ForwardClientRequests=true
+  replica.ForwardMaxBatchDelay=50
+  replica.ForwardMaxBatchSize=1450
+  replica.SelectorThreads=-1
+  test.LeaderPromoter.Interval=10000
+48              Configuration: WindowSize=2, BatchSize=65507, MaxBatchDelay=10, MaxUDPPacketSize=65507, Network=TCP, MayShareSnapshots=true, BenchmarkRunReplica=false, ClientIDGenerator=TimeBased
+48              Failure Detection: FDSendTimeout=500, FDSuspectTimeout=1000
+48              Crash model: CrashStop, LogPath: jpaxosLogs
+49              FirstSnapshotEstimateBytes=1024, MinLogSizeForRatioCheckBytes=10240, SnapshotAskRatio=1.0, SnapshotForceRatio=2.0, MinimumInstancesForSnapshotRatioSample=50
+49              RetransmitTimeoutMilisecs=1000, PeriodicCatchupMilisecs=2000, TcpReconnectMilisecs=1000
+51              Recovery phase started.
+62              Starting snapshot maintainer
+75              Opening port: 2022
+81              Opening port: 2022
+83              Network: lsr.paxos.network.TcpNetwork
+99              Registering: pendingProposals, class java.util.ArrayDeque
+106             Registering: BatcherQueue, class java.util.concurrent.ArrayBlockingQueue
+118             Registering: Replica-0-Forward, class java.util.HashMap$Values
+118             Registering: Replica-1-Forward, class java.util.HashMap$Values
+119             replica.ClientBatchAckTimeout = 50
+119             Registering: ReqManExec, class java.util.HashMap$EntrySet
+120             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+121             replica.ForwardMaxBatchDelay=50
+121             replica.ForwardMaxBatchSize=1450
+121             Registering: CReqBatcher, class java.util.concurrent.ArrayBlockingQueue
+121             Registering: pendingCReqs, class java.util.concurrent.ConcurrentHashMap$Values
+123             Number of selector threads computed dynamically. Processors: 4, selectors: 2
+123             replica.SelectorThreads=2
+129             Selector started.
+129             Selector started.
+129             Recovery phase finished. Starting paxos protocol.
+130             startPaxos
+131             UdpReader thread started. Waiting for UDP messages
+132             Creating connection: [p0] localhost, ports = (replica=2021, client=3001) - false
+134             Waiting for tcp connection to 0
+134             ActiveBatcher starting
+134             TcpNetwork thread started
+134             Registering: ReplicaIOSnd-0, class java.util.concurrent.ArrayBlockingQueue
+135             Starting failure detector
+135             Suspecting 0 on view 0
+134             ActiveRetransmitter starting
+135             Suspecting leader (0) in 1000ms
+135             Sender thread started.
+136             startProposer() handler
+137             Sending next Alive in 500ms
+138             Dropping message, not connected. To: 0. 0
+138             Msg rcv: Prepare(v:1, firstUncommitted: 0)
+140             Resending in: 2999
+140             Preparing view: 1
+140             Received from 1:ALIVE (v:1, logsize: 0)
+140             Msg rcv: ALIVE (v:1, logsize: 0)
+141             Prepare(v:1, firstUncommitted: 0) From 1
+142             Sending PrepareOK(v:1, values: [])
+142             Msg rcv: PrepareOK(v:1, values: [])
+143             Received from 1: PrepareOK(v:1, values: [])
+170             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+221             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+272             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+323             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+374             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+407             Received from 0:ALIVE (v:0, logsize: 0)
+407             Msg rcv: ALIVE (v:0, logsize: 0)
+426             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+477             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+528             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+579             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+630             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+638             Sending next Alive in 1ms
+640             Sending next Alive in 500ms
+640             Received from 1:ALIVE (v:1, logsize: 0)
+641             Msg rcv: ALIVE (v:1, logsize: 0)
+681             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+732             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+783             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+834             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+885             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+908             Received from 0:ALIVE (v:0, logsize: 0)
+908             Msg rcv: ALIVE (v:0, logsize: 0)
+911             Received connection from /127.0.0.1:61856
+911             Passive. RcvdBuffer: 4194304, SendBuffer: 4194304
+912             Tcp connected 0
+936             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+988             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1039            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1090            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1141            Sending next Alive in 500ms
+1141            Received from 1:ALIVE (v:1, logsize: 0)
+1142            Msg rcv: ALIVE (v:1, logsize: 0)
+1142            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1193            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1244            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1295            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1346            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1397            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1410            Received from 0:ALIVE (v:0, logsize: 0)
+1410            Msg rcv: ALIVE (v:0, logsize: 0)
+1449            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1500            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1551            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1602            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1643            Sending next Alive in 500ms
+1643            Received from 1:ALIVE (v:1, logsize: 0)
+1643            Msg rcv: ALIVE (v:1, logsize: 0)
+1653            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1705            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1756            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1806            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1858            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1909            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+1911            Received from 0:ALIVE (v:0, logsize: 0)
+1911            Msg rcv: ALIVE (v:0, logsize: 0)
+1960            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2011            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2062            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2113            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2144            Sending next Alive in 500ms
+2144            Received from 1:ALIVE (v:1, logsize: 0)
+2144            Msg rcv: ALIVE (v:1, logsize: 0)
+2163            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2215            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2266            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2317            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2368            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2412            Received from 0:ALIVE (v:0, logsize: 0)
+2412            Msg rcv: ALIVE (v:0, logsize: 0)
+2419            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2470            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2522            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2573            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2625            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2645            Sending next Alive in 500ms
+2645            Received from 1:ALIVE (v:1, logsize: 0)
+2646            Msg rcv: ALIVE (v:1, logsize: 0)
+2676            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2727            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2777            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2828            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2880            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2906            Received [0] Prepare(v:2, firstUncommitted: 0) size: 17
+2907            Msg rcv: Prepare(v:2, firstUncommitted: 0)
+2907            Advancing to view 2, Leader=0
+2908            Prepare(v:2, firstUncommitted: 0) From 0
+2908            Suspecting leader (0) in 1000ms
+2908            Sending PrepareOK(v:2, values: [])
+2931            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+2982            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3034            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3084            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3135            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3186            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3237            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3288            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3339            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3390            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3407            Received from 0:ALIVE (v:0, logsize: 0)
+3408            Msg rcv: ALIVE (v:0, logsize: 0)
+3441            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3492            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3543            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3594            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3646            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3697            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3748            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3799            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3850            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3902            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+3908            Received from 0:ALIVE (v:0, logsize: 0)
+3909            Msg rcv: ALIVE (v:0, logsize: 0)
+3909            Suspecting leader (0) in 499ms
+3953            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4004            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4055            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4106            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4157            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4209            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4260            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4311            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4362            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4408            Suspecting leader (0) in 501ms
+4409            Received from 0:ALIVE (v:0, logsize: 0)
+4410            Msg rcv: ALIVE (v:0, logsize: 0)
+4413            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4464            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4516            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4567            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4618            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4669            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4720            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4771            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4821            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4872            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4910            Suspecting leader (0) in 500ms
+4910            Received from 0:ALIVE (v:0, logsize: 0)
+4910            Msg rcv: ALIVE (v:0, logsize: 0)
+4923            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+4975            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5026            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5078            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5128            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5180            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5230            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5282            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5333            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5383            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5411            Suspecting leader (0) in 500ms
+5411            Received from 0:ALIVE (v:0, logsize: 0)
+5412            Msg rcv: ALIVE (v:0, logsize: 0)
+5435            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5486            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5537            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5587            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5638            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5689            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5740            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5792            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5843            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5894            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5912            Suspecting leader (0) in 500ms
+5912            Received from 0:ALIVE (v:0, logsize: 0)
+5912            Msg rcv: ALIVE (v:0, logsize: 0)
+5945            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+5996            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6047            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6098            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6148            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6200            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6250            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6302            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6353            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6404            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6413            Suspecting leader (0) in 499ms
+6413            Received from 0:ALIVE (v:0, logsize: 0)
+6414            Msg rcv: ALIVE (v:0, logsize: 0)
+6455            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6506            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6557            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6608            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6659            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6710            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6761            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6812            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6863            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6913            Suspecting leader (0) in 501ms
+6913            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+6915            Received from 0:ALIVE (v:0, logsize: 0)
+6915            Msg rcv: ALIVE (v:0, logsize: 0)
+6965            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7016            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7067            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7118            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7169            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7220            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7271            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7322            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7373            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7416            Suspecting leader (0) in 499ms
+7416            Received from 0:ALIVE (v:0, logsize: 0)
+7416            Msg rcv: ALIVE (v:0, logsize: 0)
+7424            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7475            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7526            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7578            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7629            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7680            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7731            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7782            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7833            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7884            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7916            Suspecting leader (0) in 501ms
+7917            Received from 0:ALIVE (v:0, logsize: 0)
+7917            Msg rcv: ALIVE (v:0, logsize: 0)
+7936            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+7987            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8038            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8089            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8140            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8191            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8243            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8293            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8345            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8396            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8418            Suspecting leader (0) in 499ms
+8418            Received from 0:ALIVE (v:0, logsize: 0)
+8419            Msg rcv: ALIVE (v:0, logsize: 0)
+8447            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8497            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8549            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8600            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8651            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8702            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8754            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8805            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8856            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8907            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+8918            Suspecting leader (0) in 501ms
+8919            Received from 0:ALIVE (v:0, logsize: 0)
+8919            Msg rcv: ALIVE (v:0, logsize: 0)
+8958            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9010            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9061            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9112            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9163            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9214            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9265            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9316            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9367            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9418            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9420            Suspecting leader (0) in 499ms
+9420            Received from 0:ALIVE (v:0, logsize: 0)
+9421            Msg rcv: ALIVE (v:0, logsize: 0)
+9469            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9520            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9572            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9623            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9673            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9725            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9776            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9827            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9879            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9920            Suspecting leader (0) in 501ms
+9922            Received from 0:ALIVE (v:0, logsize: 0)
+9922            Msg rcv: ALIVE (v:0, logsize: 0)
+9930            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+9981            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10032           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10083           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10135           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10186           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10237           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10289           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10340           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10390           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10422           Suspecting leader (0) in 500ms
+10422           Received from 0:ALIVE (v:0, logsize: 0)
+10423           Msg rcv: ALIVE (v:0, logsize: 0)
+10442           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10493           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10543           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10595           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10646           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10697           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10748           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10799           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10850           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10900           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+10923           Suspecting leader (0) in 500ms
+10924           Received from 0:ALIVE (v:0, logsize: 0)
+10924           Msg rcv: ALIVE (v:0, logsize: 0)
+10952           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11003           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11055           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11105           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11156           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11208           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11259           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11310           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11361           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11412           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11424           Suspecting leader (0) in 500ms
+11425           Received from 0:ALIVE (v:0, logsize: 0)
+11425           Msg rcv: ALIVE (v:0, logsize: 0)
+11463           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11514           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11565           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11617           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11668           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11719           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11770           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11822           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11873           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11924           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+11925           Suspecting leader (0) in 500ms
+11926           Received from 0:ALIVE (v:0, logsize: 0)
+11926           Msg rcv: ALIVE (v:0, logsize: 0)
+11976           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12026           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12077           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12128           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12180           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12231           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12282           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12333           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12384           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12426           Suspecting leader (0) in 500ms
+12426           Received from 0:ALIVE (v:0, logsize: 0)
+12427           Msg rcv: ALIVE (v:0, logsize: 0)
+12435           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12486           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12537           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12589           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12640           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12691           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12742           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12793           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12845           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12896           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12927           Suspecting leader (0) in 500ms
+12928           Received from 0:ALIVE (v:0, logsize: 0)
+12928           Msg rcv: ALIVE (v:0, logsize: 0)
+12947           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+12998           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13049           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13099           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13150           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13201           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13251           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13302           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13353           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13404           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13428           Suspecting leader (0) in 500ms
+13429           Received from 0:ALIVE (v:0, logsize: 0)
+13429           Msg rcv: ALIVE (v:0, logsize: 0)
+13456           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13507           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13557           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13608           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13659           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13711           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13762           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13813           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13864           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13916           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+13930           Suspecting leader (0) in 499ms
+13930           Received from 0:ALIVE (v:0, logsize: 0)
+13930           Msg rcv: ALIVE (v:0, logsize: 0)
+13967           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14018           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14069           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14121           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14172           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14223           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14275           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14326           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14377           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14428           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14430           Suspecting leader (0) in 501ms
+14431           Received from 0:ALIVE (v:0, logsize: 0)
+14431           Msg rcv: ALIVE (v:0, logsize: 0)
+14480           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14530           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14581           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14633           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14683           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14735           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14786           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14837           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14888           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14931           Suspecting leader (0) in 500ms
+14931           Received from 0:ALIVE (v:0, logsize: 0)
+14932           Msg rcv: ALIVE (v:0, logsize: 0)
+14938           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+14989           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15040           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15091           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15142           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15193           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15245           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15296           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15347           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15398           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15433           Suspecting leader (0) in 499ms
+15433           Received from 0:ALIVE (v:0, logsize: 0)
+15433           Msg rcv: ALIVE (v:0, logsize: 0)
+15449           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15501           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15552           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15603           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15654           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15705           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15756           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15807           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15858           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15909           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+15933           Suspecting leader (0) in 500ms
+15934           Received from 0:ALIVE (v:0, logsize: 0)
+15934           Msg rcv: ALIVE (v:0, logsize: 0)
+15960           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16011           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16062           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16113           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16164           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16215           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16266           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16317           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16369           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16420           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16434           Suspecting leader (0) in 500ms
+16435           Received from 0:ALIVE (v:0, logsize: 0)
+16436           Msg rcv: ALIVE (v:0, logsize: 0)
+16472           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16523           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16574           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16625           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16676           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16727           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16777           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16828           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16879           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16930           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+16936           Suspecting leader (0) in 500ms
+16936           Received from 0:ALIVE (v:0, logsize: 0)
+16936           Msg rcv: ALIVE (v:0, logsize: 0)
+16982           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17033           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17084           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17135           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17186           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17238           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17289           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17340           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17391           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17436           Suspecting leader (0) in 500ms
+17436           Received from 0:ALIVE (v:0, logsize: 0)
+17437           Msg rcv: ALIVE (v:0, logsize: 0)
+17442           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17493           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17545           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17596           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17648           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17699           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17750           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17800           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17852           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17903           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+17937           Suspecting leader (0) in 500ms
+17938           Received from 0:ALIVE (v:0, logsize: 0)
+17938           Msg rcv: ALIVE (v:0, logsize: 0)
+17954           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18005           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18056           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18108           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18159           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18210           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18261           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18311           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18363           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18414           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18439           Suspecting leader (0) in 499ms
+18439           Received from 0:ALIVE (v:0, logsize: 0)
+18439           Msg rcv: ALIVE (v:0, logsize: 0)
+18466           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18517           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18568           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18619           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18670           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18720           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18772           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18823           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18874           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18924           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+18939           Suspecting leader (0) in 500ms
+18941           Received from 0:ALIVE (v:0, logsize: 0)
+18941           Msg rcv: ALIVE (v:0, logsize: 0)
+18975           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19026           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19078           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19128           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19180           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19231           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19282           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19333           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19384           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19435           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19440           Suspecting leader (0) in 501ms
+19442           Received from 0:ALIVE (v:0, logsize: 0)
+19442           Msg rcv: ALIVE (v:0, logsize: 0)
+19486           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19538           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19588           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19640           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19690           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19741           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19792           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19843           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19895           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19942           Suspecting leader (0) in 501ms
+19943           Received from 0:ALIVE (v:0, logsize: 0)
+19943           Msg rcv: ALIVE (v:0, logsize: 0)
+19946           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+19997           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20048           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20100           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20151           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20202           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20253           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20304           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20356           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20407           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20444           Suspecting leader (0) in 499ms
+20444           Received from 0:ALIVE (v:0, logsize: 0)
+20444           Msg rcv: ALIVE (v:0, logsize: 0)
+20458           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20510           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20560           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20611           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20663           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20714           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20765           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20816           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20868           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20919           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+20944           Suspecting leader (0) in 501ms
+20945           Received from 0:ALIVE (v:0, logsize: 0)
+20945           Msg rcv: ALIVE (v:0, logsize: 0)
+20970           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21021           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21072           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21123           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21175           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21226           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21277           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21328           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21379           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21430           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21446           Received from 0:ALIVE (v:0, logsize: 0)
+21446           Msg rcv: ALIVE (v:0, logsize: 0)
+21447           Suspecting leader (0) in 999ms
+21480           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21531           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21582           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21633           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21684           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21735           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21786           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21837           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21889           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21940           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+21947           Received from 0:ALIVE (v:0, logsize: 0)
+21947           Msg rcv: ALIVE (v:0, logsize: 0)
+21992           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22043           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22094           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22145           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22196           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22247           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22298           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22349           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22400           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22447           Suspecting leader (0) in 500ms
+22448           Received from 0:ALIVE (v:0, logsize: 0)
+22448           Msg rcv: ALIVE (v:0, logsize: 0)
+22452           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22503           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22554           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22606           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22657           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22708           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22759           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22810           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22862           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22913           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+22948           Suspecting leader (0) in 501ms
+22949           Received from 0:ALIVE (v:0, logsize: 0)
+22950           Msg rcv: ALIVE (v:0, logsize: 0)
+22964           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23015           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23066           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23117           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23168           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23220           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23271           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23322           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23373           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23425           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23450           Suspecting leader (0) in 500ms
+23451           Received from 0:ALIVE (v:0, logsize: 0)
+23451           Msg rcv: ALIVE (v:0, logsize: 0)
+23476           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23509           New client connection: Socket[addr=/127.0.0.1,port=61857,localport=3002]
+23510           Connection from /127.0.0.1
+23527           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23578           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23629           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23680           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23730           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23781           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23832           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23883           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23934           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+23952           Suspecting leader (0) in 499ms
+23952           Received from 0:ALIVE (v:0, logsize: 0)
+23952           Msg rcv: ALIVE (v:0, logsize: 0)
+23985           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24036           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24086           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24137           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24188           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24240           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24291           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24342           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24393           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24444           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24452           Suspecting leader (0) in 500ms
+24454           Received from 0:ALIVE (v:0, logsize: 0)
+24454           Msg rcv: ALIVE (v:0, logsize: 0)
+24495           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24546           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24596           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24648           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24698           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24750           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24801           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24852           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24903           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24953           Suspecting leader (0) in 501ms
+24955           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+24955           Received from 0:ALIVE (v:0, logsize: 0)
+24955           Msg rcv: ALIVE (v:0, logsize: 0)
+25006           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25057           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25107           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25159           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25210           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25261           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25313           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25364           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25415           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25454           Suspecting leader (0) in 501ms
+25456           Received from 0:ALIVE (v:0, logsize: 0)
+25457           Msg rcv: ALIVE (v:0, logsize: 0)
+25466           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25517           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25567           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25618           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25669           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25720           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25771           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25822           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25873           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25923           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+25956           Suspecting leader (0) in 501ms
+25958           Received from 0:ALIVE (v:0, logsize: 0)
+25958           Msg rcv: ALIVE (v:0, logsize: 0)
+25974           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26025           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26076           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26126           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26177           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26228           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26280           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26331           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26382           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26433           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26458           Suspecting leader (0) in 500ms
+26458           Received from 0:ALIVE (v:0, logsize: 0)
+26458           Msg rcv: ALIVE (v:0, logsize: 0)
+26484           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26534           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26585           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26636           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26687           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26738           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26790           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26841           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26892           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26943           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+26959           Suspecting leader (0) in 500ms
+26959           Received from 0:ALIVE (v:0, logsize: 0)
+26959           Msg rcv: ALIVE (v:0, logsize: 0)
+26994           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27045           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27097           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27148           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27199           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27250           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27301           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27352           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27403           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27453           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27459           Suspecting leader (0) in 501ms
+27460           Received from 0:ALIVE (v:0, logsize: 0)
+27460           Msg rcv: ALIVE (v:0, logsize: 0)
+27505           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27556           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27607           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27657           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27709           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27759           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27811           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27861           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27912           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+27961           Received from 0:ALIVE (v:0, logsize: 0)
+27961           Msg rcv: ALIVE (v:0, logsize: 0)
+27961           Suspecting leader (0) in 1000ms
+27963           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28015           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28065           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28117           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28168           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28219           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28270           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28321           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28372           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28423           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28462           Received from 0:ALIVE (v:0, logsize: 0)
+28462           Msg rcv: ALIVE (v:0, logsize: 0)
+28473           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28525           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28576           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28627           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28678           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28729           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28780           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28831           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28883           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28934           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+28962           Suspecting leader (0) in 500ms
+28963           Received from 0:ALIVE (v:0, logsize: 0)
+28963           Msg rcv: ALIVE (v:0, logsize: 0)
+28985           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29036           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29087           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29138           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29189           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29240           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29290           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29341           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29392           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29443           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29463           Suspecting leader (0) in 501ms
+29465           Received from 0:ALIVE (v:0, logsize: 0)
+29465           Msg rcv: ALIVE (v:0, logsize: 0)
+29495           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29546           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29598           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29649           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29699           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29751           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29802           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29853           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29904           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29955           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+29965           Suspecting leader (0) in 500ms
+29966           Received from 0:ALIVE (v:0, logsize: 0)
+29966           Msg rcv: ALIVE (v:0, logsize: 0)
+30006           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30057           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30108           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30159           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30209           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30261           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30312           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30363           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30414           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30465           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30466           Suspecting leader (0) in 500ms
+30467           Received from 0:ALIVE (v:0, logsize: 0)
+30467           Msg rcv: ALIVE (v:0, logsize: 0)
+30516           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30567           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30618           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30670           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30720           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30771           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30822           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30873           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30924           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+30967           Suspecting leader (0) in 500ms
+30967           Received from 0:ALIVE (v:0, logsize: 0)
+30968           Msg rcv: ALIVE (v:0, logsize: 0)
+30975           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+31026           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+31035           Received: id=2763516637828003:1
+31077           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758318922
+31086           Timeout expired.
+31087           Forwarding batch: ForwardClientBatch(rid:1:1, [id=2763516637828003:1], [0, 0])
+31088           Initializing: 1:1
+31089           New SN. Replica 1, previous:0, new: 1, All: [0, 1]
+31089           Received request: rid:1:1, State:NotProposed, Acks: [01], stable:true
+31108           Received [0] Propose(v:2, i:0) size: 33
+31108           Msg rcv: Propose(v:2, i:0)
+31109           onPropose. View:instance: 2:0
+31110           Decided 0, Log Size: 1
+31112           Instance: 0: [rid=1:1]
+31112           Decided: rid:1:1, State:Decided, Acks: [01], stable:true
+31112           decidedWaitingExecution.size: 1
+31112           Executing instance: 0
+31112           Executing batch: 1:1
+31113           Executing batch rid:1:1, State:Executed, Acks: [01], stable:true, instance number 0
+31113           Property not found: parallel.batch. Using default value: false
+31113           <Service> Executed request no.0
+31113           Cannot continue execution. Next instance not decided: 1
+31114           Prunning logs. rcvdUB: [0, 0] [0, 1] 
+31114           Lower: [1, 1], firstNotProposed: [1, 1], upper: [1, 2]
+31114           Stopped prunning at 1:rid:1:1, State:Executed, Acks: [01], stable:true, batches waiting: 1
+31114           Lower: [1, 1], firstNotProposed: [1, 1], upper: [1, 2]
+31114           Enqueueing reply 2763516637828003:1
+31115           Instance finished: 0
+31120           Sending reply. 2763516637828003:1
+31126           Received [0] AckForwardClientBatch([0, 1]) size: 21
+31126           Received ack from 0: [0, 1]
+31128           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758349890
+31130           Received: id=2763516637828003:2
+31179           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758349890
+31182           Timeout expired.
+31182           Forwarding batch: ForwardClientBatch(rid:1:2, [id=2763516637828003:2], [0, 1])
+31182           Initializing: 1:2
+31182           New SN. Replica 1, previous:1, new: 2, All: [0, 2]
+31182           Received request: rid:1:2, State:NotProposed, Acks: [01], stable:true
+31196           Received [0] Propose(v:2, i:1) size: 33
+31196           Msg rcv: Propose(v:2, i:1)
+31196           onPropose. View:instance: 2:1
+31196           Decided 1, Log Size: 2
+31196           Instance: 1: [rid=1:2]
+31196           Decided: rid:1:2, State:Decided, Acks: [01], stable:true
+31196           decidedWaitingExecution.size: 1
+31197           Executing instance: 1
+31197           Executing batch: 1:2
+31197           Cannot continue execution. Next instance not decided: 2
+31197           Executing batch rid:1:2, State:Executed, Acks: [01], stable:true, instance number 1
+31197           Prunning logs. rcvdUB: [0, 1] [0, 2] 
+31197           Property not found: parallel.batch. Using default value: false
+31197           Lower: [1, 1], firstNotProposed: [1, 1], upper: [1, 3]
+31197           <Service> Executed request no.1
+31197           Stopped prunning at 2:rid:1:2, State:Executed, Acks: [01], stable:true, batches waiting: 1
+31198           Lower: [1, 2], firstNotProposed: [1, 1], upper: [1, 3]
+31199           Snapshot up to: 2
+31201           Made snapshot
+31201           Snapshot made. next instance: 1, log: 2
+31201           Enqueueing reply 2763516637828003:2
+31201           Truncated log below: 0
+31201           Instance finished: 1
+31201           Snapshot received from state machine for:1(previous: 0) New size estimate: 256.75
+31206           Sending reply. 2763516637828003:2
+31210           Received: id=2763516637828003:3
+31227           Received [0] AckForwardClientBatch([0, 2]) size: 21
+31227           Received ack from 0: [0, 2]
+31231           Sleeping: 50. lastAckedVector: [0, 1] at time 1381758349985
+31260           Timeout expired.
+31261           Forwarding batch: ForwardClientBatch(rid:1:3, [id=2763516637828003:3], [0, 2])
+31261           Initializing: 1:3
+31261           New SN. Replica 1, previous:2, new: 3, All: [0, 3]
+31261           Received request: rid:1:3, State:NotProposed, Acks: [01], stable:true
+31274           Received [0] Propose(v:2, i:2) size: 33
+31275           Msg rcv: Propose(v:2, i:2)
+31275           onPropose. View:instance: 2:2
+31275           Decided 2, Log Size: 3
+31275           Instance: 2: [rid=1:3]
+31275           Decided: rid:1:3, State:Decided, Acks: [01], stable:true
+31275           decidedWaitingExecution.size: 1
+31275           Executing instance: 2
+31276           Executing batch: 1:3
+31276           Cannot continue execution. Next instance not decided: 3
+31276           Executing batch rid:1:3, State:Executed, Acks: [01], stable:true, instance number 2
+31276           Prunning logs. rcvdUB: [0, 2] [0, 3] 
+31276           Property not found: parallel.batch. Using default value: false
+31276           Lower: [1, 2], firstNotProposed: [1, 1], upper: [1, 4]
+31276           <Service> Executed request no.2
+31276           Stopped prunning at 3:rid:1:3, State:Executed, Acks: [01], stable:true, batches waiting: 1
+31276           Enqueueing reply 2763516637828003:3
+31276           Lower: [1, 3], firstNotProposed: [1, 1], upper: [1, 4]
+31277           Instance finished: 2
+31278           Received [0] AckForwardClientBatch([0, 3]) size: 21
+31278           Received ack from 0: [0, 3]
+31281           Sleeping: 50. lastAckedVector: [0, 2] at time 1381758350064
+31285           Sending reply. 2763516637828003:3
+31289           Received: id=2763516637828003:4
+31332           Sleeping: 50. lastAckedVector: [0, 2] at time 1381758350064
+31341           Timeout expired.
+31341           Forwarding batch: ForwardClientBatch(rid:1:4, [id=2763516637828003:4], [0, 3])
+31341           Initializing: 1:4
+31342           New SN. Replica 1, previous:3, new: 4, All: [0, 4]
+31342           Received request: rid:1:4, State:NotProposed, Acks: [01], stable:true
+31353           Received [0] Propose(v:2, i:3) size: 33
+31353           Msg rcv: Propose(v:2, i:3)
+31354           onPropose. View:instance: 2:3
+31354           Decided 3, Log Size: 4
+31354           Instance: 3: [rid=1:4]
+31354           Decided: rid:1:4, State:Decided, Acks: [01], stable:true
+31354           decidedWaitingExecution.size: 1
+31354           Executing instance: 3
+31354           Executing batch: 1:4
+31354           Cannot continue execution. Next instance not decided: 4
+31354           Executing batch rid:1:4, State:Executed, Acks: [01], stable:true, instance number 3
+31354           Prunning logs. rcvdUB: [0, 3] [0, 4] 
+31355           Property not found: parallel.batch. Using default value: false
+31355           Lower: [1, 3], firstNotProposed: [1, 1], upper: [1, 5]
+31355           <Service> Executed request no.3
+31355           Enqueueing reply 2763516637828003:4
+31355           Stopped prunning at 4:rid:1:4, State:Executed, Acks: [01], stable:true, batches waiting: 1
+31355           Instance finished: 3
+31355           Lower: [1, 4], firstNotProposed: [1, 1], upper: [1, 5]
+31365           Sending reply. 2763516637828003:4
+31374           Received: id=2763516637828003:5
+31380           Received [0] AckForwardClientBatch([0, 4]) size: 21
+31381           Received ack from 0: [0, 4]
+31384           Sleeping: 50. lastAckedVector: [0, 3] at time 1381758350144
+31425           Timeout expired.
+31426           Forwarding batch: ForwardClientBatch(rid:1:5, [id=2763516637828003:5], [0, 4])
+31426           Initializing: 1:5
+31426           New SN. Replica 1, previous:4, new: 5, All: [0, 5]
+31426           Received request: rid:1:5, State:NotProposed, Acks: [01], stable:true
+31432           Received [0] AckForwardClientBatch([0, 5]) size: 21
+31432           Received ack from 0: [0, 5]
+31434           Sleeping: 50. lastAckedVector: [0, 4] at time 1381758350229
+31439           Received [0] Propose(v:2, i:4) size: 33
+31440           Msg rcv: Propose(v:2, i:4)
+31440           onPropose. View:instance: 2:4
+31440           Decided 4, Log Size: 5
+31440           Instance: 4: [rid=1:5]
+31440           Decided: rid:1:5, State:Decided, Acks: [11], stable:true
+31440           decidedWaitingExecution.size: 1
+31440           Executing instance: 4
+31441           Executing batch: 1:5
+31441           Cannot continue execution. Next instance not decided: 5
+31441           Executing batch rid:1:5, State:Executed, Acks: [11], stable:true, instance number 4
+31441           Prunning logs. rcvdUB: [0, 5] [0, 5] 
+31441           Property not found: parallel.batch. Using default value: false
+31441           Lower: [1, 4], firstNotProposed: [1, 1], upper: [1, 6]
+31441           <Service> Executed request no.4
+31441           Lower: [1, 6], firstNotProposed: [1, 1], upper: [1, 6]
+31441           Enqueueing reply 2763516637828003:5
+31442           Instance finished: 4
+31448           Sending reply. 2763516637828003:5
+31457           Received: id=2763516637828003:6
+31468           Suspecting leader (0) in 972ms
+31485           Sleeping: 50. lastAckedVector: [0, 4] at time 1381758350229
+31508           Timeout expired.
+31509           Forwarding batch: ForwardClientBatch(rid:1:6, [id=2763516637828003:6], [0, 5])
+31509           Initializing: 1:6
+31509           New SN. Replica 1, previous:5, new: 6, All: [0, 6]
+31509           Received request: rid:1:6, State:NotProposed, Acks: [01], stable:true
+31523           Received [0] Propose(v:2, i:5) size: 33
+31523           Msg rcv: Propose(v:2, i:5)
+31523           onPropose. View:instance: 2:5
+31523           Decided 5, Log Size: 6
+31523           Instance: 5: [rid=1:6]
+31524           Decided: rid:1:6, State:Decided, Acks: [01], stable:true
+31524           decidedWaitingExecution.size: 1
+31524           Executing instance: 5
+31524           Executing batch: 1:6
+31524           Cannot continue execution. Next instance not decided: 6
+31524           Executing batch rid:1:6, State:Executed, Acks: [01], stable:true, instance number 5
+31524           Prunning logs. rcvdUB: [0, 5] [0, 6] 
+31524           Property not found: parallel.batch. Using default value: false
+31524           Lower: [1, 6], firstNotProposed: [1, 1], upper: [1, 7]
+31524           <Service> Executed request no.5
+31525           Stopped prunning at 6:rid:1:6, State:Executed, Acks: [01], stable:true, batches waiting: 1
+31525           Enqueueing reply 2763516637828003:6
+31525           Lower: [1, 6], firstNotProposed: [1, 1], upper: [1, 7]
+31525           Instance finished: 5
+31533           Sending reply. 2763516637828003:6
+31533           Received [0] AckForwardClientBatch([0, 6]) size: 21
+31534           Received ack from 0: [0, 6]
+31536           Sleeping: 50. lastAckedVector: [0, 5] at time 1381758350312
+31540           Received: id=2763516637828003:7
+31586           Sleeping: 50. lastAckedVector: [0, 5] at time 1381758350312
+31591           Timeout expired.
+31591           Forwarding batch: ForwardClientBatch(rid:1:7, [id=2763516637828003:7], [0, 6])
+31592           Initializing: 1:7
+31592           New SN. Replica 1, previous:6, new: 7, All: [0, 7]
+31592           Received request: rid:1:7, State:NotProposed, Acks: [01], stable:true
+31603           Received [0] Propose(v:2, i:6) size: 33
+31603           Msg rcv: Propose(v:2, i:6)
+31603           onPropose. View:instance: 2:6
+31604           Decided 6, Log Size: 7
+31604           Instance: 6: [rid=1:7]
+31604           Decided: rid:1:7, State:Decided, Acks: [01], stable:true
+31604           decidedWaitingExecution.size: 1
+31604           Executing instance: 6
+31604           Executing batch: 1:7
+31605           Cannot continue execution. Next instance not decided: 7
+31605           Executing batch rid:1:7, State:Executed, Acks: [01], stable:true, instance number 6
+31605           Prunning logs. rcvdUB: [0, 6] [0, 7] 
+31605           Property not found: parallel.batch. Using default value: false
+31605           Lower: [1, 6], firstNotProposed: [1, 1], upper: [1, 8]
+31605           <Service> Executed request no.6
+31605           Stopped prunning at 7:rid:1:7, State:Executed, Acks: [01], stable:true, batches waiting: 1
+31605           Enqueueing reply 2763516637828003:7
+31605           Lower: [1, 7], firstNotProposed: [1, 1], upper: [1, 8]
+31605           Instance finished: 6
+31614           Sending reply. 2763516637828003:7
+31622           Received: id=2763516637828003:8
+31636           Received [0] AckForwardClientBatch([0, 7]) size: 21
+31636           Received ack from 0: [0, 7]
+31638           Sleeping: 50. lastAckedVector: [0, 6] at time 1381758350394
+31673           Timeout expired.
+31674           Forwarding batch: ForwardClientBatch(rid:1:8, [id=2763516637828003:8], [0, 7])
+31674           Initializing: 1:8
+31674           New SN. Replica 1, previous:7, new: 8, All: [0, 8]
+31674           Received request: rid:1:8, State:NotProposed, Acks: [01], stable:true
+31687           Received [0] AckForwardClientBatch([0, 8]) size: 21
+31687           Received ack from 0: [0, 8]
+31687           Received [0] Propose(v:2, i:7) size: 33
+31688           Msg rcv: Propose(v:2, i:7)
+31688           onPropose. View:instance: 2:7
+31688           Decided 7, Log Size: 8
+31688           Instance: 7: [rid=1:8]
+31688           Sleeping: 50. lastAckedVector: [0, 7] at time 1381758350477
+31688           Decided: rid:1:8, State:Decided, Acks: [11], stable:true
+31689           decidedWaitingExecution.size: 1
+31689           Executing instance: 7
+31689           Executing batch: 1:8
+31689           Cannot continue execution. Next instance not decided: 8
+31689           Executing batch rid:1:8, State:Executed, Acks: [11], stable:true, instance number 7
+31689           Prunning logs. rcvdUB: [0, 8] [0, 8] 
+31689           Property not found: parallel.batch. Using default value: false
+31689           Lower: [1, 7], firstNotProposed: [1, 1], upper: [1, 9]
+31689           <Service> Executed request no.7
+31690           Lower: [1, 9], firstNotProposed: [1, 1], upper: [1, 9]
+31690           Enqueueing reply 2763516637828003:8
+31690           Instance finished: 7
+31698           Sending reply. 2763516637828003:8
+31699           Received: id=2763516637828003:9
+31740           Sleeping: 50. lastAckedVector: [0, 7] at time 1381758350477
+31750           Timeout expired.
+31750           Forwarding batch: ForwardClientBatch(rid:1:9, [id=2763516637828003:9], [0, 8])
+31751           Initializing: 1:9
+31751           New SN. Replica 1, previous:8, new: 9, All: [0, 9]
+31751           Received request: rid:1:9, State:NotProposed, Acks: [01], stable:true
+31764           Received [0] Propose(v:2, i:8) size: 33
+31764           Msg rcv: Propose(v:2, i:8)
+31764           onPropose. View:instance: 2:8
+31765           Decided 8, Log Size: 9
+31765           Instance: 8: [rid=1:9]
+31765           Decided: rid:1:9, State:Decided, Acks: [01], stable:true
+31765           decidedWaitingExecution.size: 1
+31765           Executing instance: 8
+31765           Executing batch: 1:9
+31765           Cannot continue execution. Next instance not decided: 9
+31765           Executing batch rid:1:9, State:Executed, Acks: [01], stable:true, instance number 8
+31765           Prunning logs. rcvdUB: [0, 8] [0, 9] 
+31766           Property not found: parallel.batch. Using default value: false
+31766           Lower: [1, 9], firstNotProposed: [1, 1], upper: [1, 10]
+31766           <Service> Executed request no.8
+31766           Stopped prunning at 9:rid:1:9, State:Executed, Acks: [01], stable:true, batches waiting: 1
+31766           Enqueueing reply 2763516637828003:9
+31766           Lower: [1, 9], firstNotProposed: [1, 1], upper: [1, 10]
+31766           Instance finished: 8
+31773           Sending reply. 2763516637828003:9
+31783           Received: id=2763516637828003:10
+31790           Received [0] AckForwardClientBatch([0, 9]) size: 21
+31790           Received ack from 0: [0, 9]
+31790           Sleeping: 50. lastAckedVector: [0, 8] at time 1381758350554
+31835           Timeout expired.
+31835           Forwarding batch: ForwardClientBatch(rid:1:10, [id=2763516637828003:10], [0, 9])
+31835           Initializing: 1:10
+31835           New SN. Replica 1, previous:9, new: 10, All: [0, 10]
+31835           Received request: rid:1:10, State:NotProposed, Acks: [01], stable:true
+31841           Received [0] AckForwardClientBatch([0, 10]) size: 21
+31841           Received ack from 0: [0, 10]
+31842           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+31848           Received [0] Propose(v:2, i:9) size: 33
+31848           Msg rcv: Propose(v:2, i:9)
+31848           onPropose. View:instance: 2:9
+31848           Decided 9, Log Size: 10
+31849           Instance: 9: [rid=1:10]
+31849           Decided: rid:1:10, State:Decided, Acks: [11], stable:true
+31849           decidedWaitingExecution.size: 1
+31849           Executing instance: 9
+31849           Executing batch: 1:10
+31849           Cannot continue execution. Next instance not decided: 10
+31849           Executing batch rid:1:10, State:Executed, Acks: [11], stable:true, instance number 9
+31849           Prunning logs. rcvdUB: [0, 10] [0, 10] 
+31849           Property not found: parallel.batch. Using default value: false
+31849           Lower: [1, 9], firstNotProposed: [1, 1], upper: [1, 11]
+31850           <Service> Executed request no.9
+31850           Lower: [1, 11], firstNotProposed: [1, 1], upper: [1, 11]
+31850           Enqueueing reply 2763516637828003:10
+31850           Instance finished: 9
+31860           Sending reply. 2763516637828003:10
+31893           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+31944           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+31995           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32046           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32096           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32148           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32199           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32250           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32301           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32349           Received from 0:ALIVE (v:0, logsize: 10)
+32349           Msg rcv: ALIVE (v:0, logsize: 10)
+32352           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32402           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32441           Suspecting leader (0) in 908ms
+32454           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32505           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32556           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32607           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32659           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32709           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32760           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32811           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32850           Received from 0:ALIVE (v:0, logsize: 10)
+32850           Msg rcv: ALIVE (v:0, logsize: 10)
+32862           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32913           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+32964           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33015           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33067           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33117           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33169           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33219           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33270           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33321           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33350           Suspecting leader (0) in 500ms
+33351           Received from 0:ALIVE (v:0, logsize: 10)
+33351           Msg rcv: ALIVE (v:0, logsize: 10)
+33372           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33423           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33474           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33526           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33576           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33628           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33678           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33729           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33780           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33831           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33851           Suspecting leader (0) in 500ms
+33852           Received from 0:ALIVE (v:0, logsize: 10)
+33852           Msg rcv: ALIVE (v:0, logsize: 10)
+33882           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33933           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+33984           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34035           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34086           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34137           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34189           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34240           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34292           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34343           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34352           Suspecting leader (0) in 500ms
+34353           Received from 0:ALIVE (v:0, logsize: 10)
+34354           Msg rcv: ALIVE (v:0, logsize: 10)
+34394           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34445           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34496           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34547           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34598           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34650           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34701           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34752           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34803           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34853           Suspecting leader (0) in 501ms
+34855           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34855           Received from 0:ALIVE (v:0, logsize: 10)
+34855           Msg rcv: ALIVE (v:0, logsize: 10)
+34905           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+34957           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35008           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35059           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35110           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35161           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35213           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35263           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35314           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35355           Suspecting leader (0) in 500ms
+35357           Received from 0:ALIVE (v:0, logsize: 10)
+35357           Msg rcv: ALIVE (v:0, logsize: 10)
+35365           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35416           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35467           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35519           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35570           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35622           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35673           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35724           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35776           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35827           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35856           Suspecting leader (0) in 501ms
+35858           Received from 0:ALIVE (v:0, logsize: 10)
+35858           Msg rcv: ALIVE (v:0, logsize: 10)
+35878           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35928           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+35979           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36031           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36081           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36132           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36183           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36234           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36285           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36336           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36358           Suspecting leader (0) in 500ms
+36359           Received from 0:ALIVE (v:0, logsize: 10)
+36359           Msg rcv: ALIVE (v:0, logsize: 10)
+36387           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36439           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36490           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36540           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36592           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36643           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36694           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36746           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36797           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36848           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36859           Suspecting leader (0) in 501ms
+36860           Received from 0:ALIVE (v:0, logsize: 10)
+36861           Msg rcv: ALIVE (v:0, logsize: 10)
+36898           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+36949           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37000           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37050           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37102           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37153           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37204           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37255           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37306           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37357           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37361           Suspecting leader (0) in 500ms
+37361           Received from 0:ALIVE (v:0, logsize: 10)
+37362           Msg rcv: ALIVE (v:0, logsize: 10)
+37409           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37460           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37511           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37562           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37614           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37665           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37716           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37767           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37819           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37863           Suspecting leader (0) in 499ms
+37863           Received from 0:ALIVE (v:0, logsize: 10)
+37863           Msg rcv: ALIVE (v:0, logsize: 10)
+37870           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37921           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+37973           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+38023           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+38074           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+38125           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+38176           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+38227           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+38237           Received: id=2763516637828003:11
+38278           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350638
+38287           Timeout expired.
+38288           Forwarding batch: ForwardClientBatch(rid:1:11, [id=2763516637828003:11], [0, 10])
+38288           Initializing: 1:11
+38288           New SN. Replica 1, previous:10, new: 11, All: [0, 11]
+38288           Received request: rid:1:11, State:NotProposed, Acks: [01], stable:true
+38301           Received [0] Propose(v:2, i:10) size: 33
+38301           Msg rcv: Propose(v:2, i:10)
+38301           onPropose. View:instance: 2:10
+38301           Decided 10, Log Size: 11
+38302           Instance: 10: [rid=1:11]
+38302           Decided: rid:1:11, State:Decided, Acks: [01], stable:true
+38302           decidedWaitingExecution.size: 1
+38302           Executing instance: 10
+38302           Executing batch: 1:11
+38302           Cannot continue execution. Next instance not decided: 11
+38302           Executing batch rid:1:11, State:Executed, Acks: [01], stable:true, instance number 10
+38302           Prunning logs. rcvdUB: [0, 10] [0, 11] 
+38302           Property not found: parallel.batch. Using default value: false
+38303           Lower: [1, 11], firstNotProposed: [1, 1], upper: [1, 12]
+38303           <Service> Executed request no.10
+38303           Stopped prunning at 11:rid:1:11, State:Executed, Acks: [01], stable:true, batches waiting: 1
+38303           Enqueueing reply 2763516637828003:11
+38303           Lower: [1, 11], firstNotProposed: [1, 1], upper: [1, 12]
+38303           Instance finished: 10
+38313           Sending reply. 2763516637828003:11
+38316           Received: id=2763516637828003:12
+38328           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758357091
+38329           Received [0] AckForwardClientBatch([0, 11]) size: 21
+38329           Received ack from 0: [0, 11]
+38362           Suspecting leader (0) in 967ms
+38367           Timeout expired.
+38368           Forwarding batch: ForwardClientBatch(rid:1:12, [id=2763516637828003:12], [0, 11])
+38368           Initializing: 1:12
+38368           New SN. Replica 1, previous:11, new: 12, All: [0, 12]
+38368           Received request: rid:1:12, State:NotProposed, Acks: [01], stable:true
+38379           Sleeping: 50. lastAckedVector: [0, 11] at time 1381758357171
+38380           Received [0] AckForwardClientBatch([0, 12]) size: 21
+38380           Received ack from 0: [0, 12]
+38381           Received [0] Propose(v:2, i:11) size: 33
+38381           Msg rcv: Propose(v:2, i:11)
+38381           onPropose. View:instance: 2:11
+38381           Decided 11, Log Size: 12
+38382           Instance: 11: [rid=1:12]
+38382           Decided: rid:1:12, State:Decided, Acks: [11], stable:true
+38382           decidedWaitingExecution.size: 1
+38382           Executing instance: 11
+38382           Executing batch: 1:12
+38382           Cannot continue execution. Next instance not decided: 12
+38382           Executing batch rid:1:12, State:Executed, Acks: [11], stable:true, instance number 11
+38382           Prunning logs. rcvdUB: [0, 12] [0, 12] 
+38382           Property not found: parallel.batch. Using default value: false
+38383           Lower: [1, 11], firstNotProposed: [1, 1], upper: [1, 13]
+38383           <Service> Executed request no.11
+38383           Lower: [1, 13], firstNotProposed: [1, 1], upper: [1, 13]
+38383           Enqueueing reply 2763516637828003:12
+38383           Instance finished: 11
+38391           Sending reply. 2763516637828003:12
+38399           Received: id=2763516637828003:13
+38430           Sleeping: 50. lastAckedVector: [0, 11] at time 1381758357171
+38450           Timeout expired.
+38450           Forwarding batch: ForwardClientBatch(rid:1:13, [id=2763516637828003:13], [0, 12])
+38450           Initializing: 1:13
+38450           New SN. Replica 1, previous:12, new: 13, All: [0, 13]
+38450           Received request: rid:1:13, State:NotProposed, Acks: [01], stable:true
+38464           Received [0] Propose(v:2, i:12) size: 33
+38464           Msg rcv: Propose(v:2, i:12)
+38464           onPropose. View:instance: 2:12
+38464           Decided 12, Log Size: 13
+38465           Instance: 12: [rid=1:13]
+38465           Decided: rid:1:13, State:Decided, Acks: [01], stable:true
+38465           decidedWaitingExecution.size: 1
+38465           Executing instance: 12
+38465           Executing batch: 1:13
+38465           Cannot continue execution. Next instance not decided: 13
+38465           Executing batch rid:1:13, State:Executed, Acks: [01], stable:true, instance number 12
+38465           Prunning logs. rcvdUB: [0, 12] [0, 13] 
+38465           Property not found: parallel.batch. Using default value: false
+38466           Lower: [1, 13], firstNotProposed: [1, 1], upper: [1, 14]
+38466           <Service> Executed request no.12
+38466           Stopped prunning at 13:rid:1:13, State:Executed, Acks: [01], stable:true, batches waiting: 1
+38466           Enqueueing reply 2763516637828003:13
+38466           Lower: [1, 13], firstNotProposed: [1, 1], upper: [1, 14]
+38466           Instance finished: 12
+38474           Sending reply. 2763516637828003:13
+38481           Sleeping: 50. lastAckedVector: [0, 12] at time 1381758357253
+38481           Received [0] AckForwardClientBatch([0, 13]) size: 21
+38482           Received ack from 0: [0, 13]
+38483           Received: id=2763516637828003:14
+38532           Sleeping: 50. lastAckedVector: [0, 12] at time 1381758357253
+38533           Timeout expired.
+38533           Forwarding batch: ForwardClientBatch(rid:1:14, [id=2763516637828003:14], [0, 13])
+38534           Initializing: 1:14
+38534           New SN. Replica 1, previous:13, new: 14, All: [0, 14]
+38534           Received request: rid:1:14, State:NotProposed, Acks: [01], stable:true
+38547           Received [0] Propose(v:2, i:13) size: 33
+38547           Msg rcv: Propose(v:2, i:13)
+38547           onPropose. View:instance: 2:13
+38547           Decided 13, Log Size: 14
+38548           Instance: 13: [rid=1:14]
+38548           Decided: rid:1:14, State:Decided, Acks: [01], stable:true
+38548           decidedWaitingExecution.size: 1
+38548           Executing instance: 13
+38548           Executing batch: 1:14
+38548           Cannot continue execution. Next instance not decided: 14
+38548           Executing batch rid:1:14, State:Executed, Acks: [01], stable:true, instance number 13
+38548           Prunning logs. rcvdUB: [0, 13] [0, 14] 
+38548           Property not found: parallel.batch. Using default value: false
+38549           Lower: [1, 13], firstNotProposed: [1, 1], upper: [1, 15]
+38549           <Service> Executed request no.13
+38549           Stopped prunning at 14:rid:1:14, State:Executed, Acks: [01], stable:true, batches waiting: 1
+38549           Enqueueing reply 2763516637828003:14
+38549           Lower: [1, 14], firstNotProposed: [1, 1], upper: [1, 15]
+38549           Instance finished: 13
+38558           Sending reply. 2763516637828003:14
+38564           Received: id=2763516637828003:15
+38583           Sleeping: 50. lastAckedVector: [0, 13] at time 1381758357336
+38584           Received [0] AckForwardClientBatch([0, 14]) size: 21
+38584           Received ack from 0: [0, 14]
+38614           Timeout expired.
+38615           Forwarding batch: ForwardClientBatch(rid:1:15, [id=2763516637828003:15], [0, 14])
+38615           Initializing: 1:15
+38615           New SN. Replica 1, previous:14, new: 15, All: [0, 15]
+38615           Received request: rid:1:15, State:NotProposed, Acks: [01], stable:true
+38629           Received [0] Propose(v:2, i:14) size: 33
+38629           Msg rcv: Propose(v:2, i:14)
+38629           onPropose. View:instance: 2:14
+38629           Decided 14, Log Size: 15
+38629           Instance: 14: [rid=1:15]
+38630           Decided: rid:1:15, State:Decided, Acks: [01], stable:true
+38630           decidedWaitingExecution.size: 1
+38630           Executing instance: 14
+38630           Executing batch: 1:15
+38630           Executing batch rid:1:15, State:Executed, Acks: [01], stable:true, instance number 14
+38630           Cannot continue execution. Next instance not decided: 15
+38630           Property not found: parallel.batch. Using default value: false
+38630           Prunning logs. rcvdUB: [0, 14] [0, 15] 
+38630           <Service> Executed request no.14
+38630           Lower: [1, 14], firstNotProposed: [1, 1], upper: [1, 16]
+38630           Enqueueing reply 2763516637828003:15
+38631           Stopped prunning at 15:rid:1:15, State:Executed, Acks: [01], stable:true, batches waiting: 1
+38631           Instance finished: 14
+38631           Lower: [1, 15], firstNotProposed: [1, 1], upper: [1, 16]
+38634           Sleeping: 50. lastAckedVector: [0, 14] at time 1381758357418
+38634           Received [0] AckForwardClientBatch([0, 15]) size: 21
+38635           Received ack from 0: [0, 15]
+38640           Sending reply. 2763516637828003:15
+38649           Received: id=2763516637828003:16
+38685           Sleeping: 50. lastAckedVector: [0, 14] at time 1381758357418
+38700           Timeout expired.
+38700           Forwarding batch: ForwardClientBatch(rid:1:16, [id=2763516637828003:16], [0, 15])
+38700           Initializing: 1:16
+38700           New SN. Replica 1, previous:15, new: 16, All: [0, 16]
+38700           Received request: rid:1:16, State:NotProposed, Acks: [01], stable:true
+38713           Received [0] Propose(v:2, i:15) size: 33
+38713           Msg rcv: Propose(v:2, i:15)
+38713           onPropose. View:instance: 2:15
+38713           Decided 15, Log Size: 16
+38714           Instance: 15: [rid=1:16]
+38714           Decided: rid:1:16, State:Decided, Acks: [01], stable:true
+38714           decidedWaitingExecution.size: 1
+38714           Executing instance: 15
+38714           Executing batch: 1:16
+38714           Cannot continue execution. Next instance not decided: 16
+38714           Executing batch rid:1:16, State:Executed, Acks: [01], stable:true, instance number 15
+38714           Prunning logs. rcvdUB: [0, 15] [0, 16] 
+38714           Property not found: parallel.batch. Using default value: false
+38715           Lower: [1, 15], firstNotProposed: [1, 1], upper: [1, 17]
+38715           <Service> Executed request no.15
+38715           Stopped prunning at 16:rid:1:16, State:Executed, Acks: [01], stable:true, batches waiting: 1
+38715           Snapshot up to: 16
+38715           Lower: [1, 16], firstNotProposed: [1, 1], upper: [1, 17]
+38715           Made snapshot
+38715           Snapshot made. next instance: 15, log: 16
+38715           Enqueueing reply 2763516637828003:16
+38716           Instance finished: 15
+38716           Truncated log below: 1
+38716           Snapshot received from state machine for:15(previous: 1) New size estimate: 64.9375
+38724           Sending reply. 2763516637828003:16
+38734           Received: id=2763516637828003:17
+38736           Sleeping: 50. lastAckedVector: [0, 15] at time 1381758357503
+38736           Received [0] AckForwardClientBatch([0, 16]) size: 21
+38737           Received ack from 0: [0, 16]
+38785           Timeout expired.
+38785           Forwarding batch: ForwardClientBatch(rid:1:17, [id=2763516637828003:17], [0, 16])
+38785           Initializing: 1:17
+38785           New SN. Replica 1, previous:16, new: 17, All: [0, 17]
+38785           Received request: rid:1:17, State:NotProposed, Acks: [01], stable:true
+38787           Sleeping: 50. lastAckedVector: [0, 16] at time 1381758357588
+38787           Received [0] AckForwardClientBatch([0, 17]) size: 21
+38787           Received ack from 0: [0, 17]
+38798           Received [0] Propose(v:2, i:16) size: 33
+38798           Msg rcv: Propose(v:2, i:16)
+38798           onPropose. View:instance: 2:16
+38799           Decided 16, Log Size: 16
+38799           Instance: 16: [rid=1:17]
+38799           Decided: rid:1:17, State:Decided, Acks: [11], stable:true
+38799           decidedWaitingExecution.size: 1
+38799           Executing instance: 16
+38799           Executing batch: 1:17
+38799           Executing batch rid:1:17, State:Executed, Acks: [11], stable:true, instance number 16
+38799           Cannot continue execution. Next instance not decided: 17
+38799           Property not found: parallel.batch. Using default value: false
+38800           Prunning logs. rcvdUB: [0, 17] [0, 17] 
+38800           <Service> Executed request no.16
+38800           Lower: [1, 16], firstNotProposed: [1, 1], upper: [1, 18]
+38800           Enqueueing reply 2763516637828003:17
+38800           Lower: [1, 18], firstNotProposed: [1, 1], upper: [1, 18]
+38800           Instance finished: 16
+38808           Sending reply. 2763516637828003:17
+38817           Received: id=2763516637828003:18
+38837           Sleeping: 50. lastAckedVector: [0, 16] at time 1381758357588
+38868           Timeout expired.
+38868           Forwarding batch: ForwardClientBatch(rid:1:18, [id=2763516637828003:18], [0, 17])
+38869           Initializing: 1:18
+38869           New SN. Replica 1, previous:17, new: 18, All: [0, 18]
+38869           Received request: rid:1:18, State:NotProposed, Acks: [01], stable:true
+38882           Received [0] Propose(v:2, i:17) size: 33
+38882           Msg rcv: Propose(v:2, i:17)
+38882           onPropose. View:instance: 2:17
+38882           Decided 17, Log Size: 17
+38882           Instance: 17: [rid=1:18]
+38882           Decided: rid:1:18, State:Decided, Acks: [01], stable:true
+38882           decidedWaitingExecution.size: 1
+38883           Executing instance: 17
+38883           Executing batch: 1:18
+38883           Cannot continue execution. Next instance not decided: 18
+38883           Executing batch rid:1:18, State:Executed, Acks: [01], stable:true, instance number 17
+38883           Prunning logs. rcvdUB: [0, 17] [0, 18] 
+38883           Property not found: parallel.batch. Using default value: false
+38883           Lower: [1, 18], firstNotProposed: [1, 1], upper: [1, 19]
+38883           <Service> Executed request no.17
+38884           Enqueueing reply 2763516637828003:18
+38883           Stopped prunning at 18:rid:1:18, State:Executed, Acks: [01], stable:true, batches waiting: 1
+38884           Instance finished: 17
+38884           Lower: [1, 18], firstNotProposed: [1, 1], upper: [1, 19]
+38888           Sleeping: 50. lastAckedVector: [0, 17] at time 1381758357671
+38889           Received [0] AckForwardClientBatch([0, 18]) size: 21
+38889           Received ack from 0: [0, 18]
+38892           Sending reply. 2763516637828003:18
+38896           Received: id=2763516637828003:19
+38940           Sleeping: 50. lastAckedVector: [0, 17] at time 1381758357671
+38947           Timeout expired.
+38948           Forwarding batch: ForwardClientBatch(rid:1:19, [id=2763516637828003:19], [0, 18])
+38948           Initializing: 1:19
+38948           New SN. Replica 1, previous:18, new: 19, All: [0, 19]
+38948           Received request: rid:1:19, State:NotProposed, Acks: [01], stable:true
+38962           Received [0] Propose(v:2, i:18) size: 33
+38962           Msg rcv: Propose(v:2, i:18)
+38962           onPropose. View:instance: 2:18
+38962           Decided 18, Log Size: 18
+38962           Instance: 18: [rid=1:19]
+38963           Decided: rid:1:19, State:Decided, Acks: [01], stable:true
+38963           decidedWaitingExecution.size: 1
+38963           Executing instance: 18
+38963           Executing batch: 1:19
+38963           Cannot continue execution. Next instance not decided: 19
+38963           Executing batch rid:1:19, State:Executed, Acks: [01], stable:true, instance number 18
+38963           Prunning logs. rcvdUB: [0, 18] [0, 19] 
+38963           Property not found: parallel.batch. Using default value: false
+38963           Lower: [1, 18], firstNotProposed: [1, 1], upper: [1, 20]
+38963           <Service> Executed request no.18
+38964           Stopped prunning at 19:rid:1:19, State:Executed, Acks: [01], stable:true, batches waiting: 1
+38964           Lower: [1, 19], firstNotProposed: [1, 1], upper: [1, 20]
+38964           Enqueueing reply 2763516637828003:19
+38964           Instance finished: 18
+38971           Sending reply. 2763516637828003:19
+38972           Received: id=2763516637828003:20
+38991           Sleeping: 50. lastAckedVector: [0, 18] at time 1381758357751
+38992           Received [0] AckForwardClientBatch([0, 19]) size: 21
+38992           Received ack from 0: [0, 19]
+39023           Timeout expired.
+39023           Forwarding batch: ForwardClientBatch(rid:1:20, [id=2763516637828003:20], [0, 19])
+39023           Initializing: 1:20
+39023           New SN. Replica 1, previous:19, new: 20, All: [0, 20]
+39023           Received request: rid:1:20, State:NotProposed, Acks: [01], stable:true
+39036           Received [0] Propose(v:2, i:19) size: 33
+39036           Msg rcv: Propose(v:2, i:19)
+39036           onPropose. View:instance: 2:19
+39036           Decided 19, Log Size: 19
+39037           Instance: 19: [rid=1:20]
+39037           Decided: rid:1:20, State:Decided, Acks: [01], stable:true
+39037           decidedWaitingExecution.size: 1
+39037           Executing instance: 19
+39037           Executing batch: 1:20
+39037           Cannot continue execution. Next instance not decided: 20
+39037           Executing batch rid:1:20, State:Executed, Acks: [01], stable:true, instance number 19
+39037           Prunning logs. rcvdUB: [0, 19] [0, 20] 
+39037           Property not found: parallel.batch. Using default value: false
+39038           Lower: [1, 19], firstNotProposed: [1, 1], upper: [1, 21]
+39038           <Service> Executed request no.19
+39038           Stopped prunning at 20:rid:1:20, State:Executed, Acks: [01], stable:true, batches waiting: 1
+39038           Enqueueing reply 2763516637828003:20
+39038           Lower: [1, 20], firstNotProposed: [1, 1], upper: [1, 21]
+39038           Instance finished: 19
+39042           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39042           Received [0] AckForwardClientBatch([0, 20]) size: 21
+39042           Received ack from 0: [0, 20]
+39047           Sending reply. 2763516637828003:20
+39093           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39144           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39195           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39247           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39298           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39330           Suspecting leader (0) in 712ms
+39349           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39399           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39450           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39501           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39543           Received from 0:ALIVE (v:0, logsize: 20)
+39544           Msg rcv: ALIVE (v:0, logsize: 20)
+39552           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39603           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39654           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39705           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39756           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39807           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39859           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39909           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+39960           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40011           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40042           Suspecting leader (0) in 502ms
+40045           Received from 0:ALIVE (v:0, logsize: 20)
+40045           Msg rcv: ALIVE (v:0, logsize: 20)
+40063           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40114           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40165           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40217           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40268           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40319           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40371           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40422           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40473           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40524           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40546           Suspecting leader (0) in 499ms
+40546           Received from 0:ALIVE (v:0, logsize: 20)
+40546           Msg rcv: ALIVE (v:0, logsize: 20)
+40576           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40627           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40678           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40728           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40780           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40831           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40882           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40933           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+40984           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41035           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41046           Suspecting leader (0) in 500ms
+41048           Received from 0:ALIVE (v:0, logsize: 20)
+41048           Msg rcv: ALIVE (v:0, logsize: 20)
+41086           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41137           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41188           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41239           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41291           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41342           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41392           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41444           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41495           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41546           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41547           Suspecting leader (0) in 501ms
+41549           Received from 0:ALIVE (v:0, logsize: 20)
+41549           Msg rcv: ALIVE (v:0, logsize: 20)
+41598           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41648           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41700           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41751           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41802           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41853           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41904           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+41955           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42006           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42049           Suspecting leader (0) in 501ms
+42051           Received from 0:ALIVE (v:0, logsize: 20)
+42051           Msg rcv: ALIVE (v:0, logsize: 20)
+42057           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42109           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42160           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42211           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42262           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42313           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42364           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42415           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42466           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42518           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42551           Suspecting leader (0) in 500ms
+42552           Received from 0:ALIVE (v:0, logsize: 20)
+42552           Msg rcv: ALIVE (v:0, logsize: 20)
+42569           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42621           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42672           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42723           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42774           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42825           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42877           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42928           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+42978           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43030           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43053           Suspecting leader (0) in 499ms
+43053           Received from 0:ALIVE (v:0, logsize: 20)
+43053           Msg rcv: ALIVE (v:0, logsize: 20)
+43081           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43132           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43183           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43234           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43286           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43337           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43388           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43439           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43491           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43541           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43552           Suspecting leader (0) in 501ms
+43554           Received from 0:ALIVE (v:0, logsize: 20)
+43555           Msg rcv: ALIVE (v:0, logsize: 20)
+43593           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43644           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43695           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43746           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43797           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43849           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43899           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+43950           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44002           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44053           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44054           Suspecting leader (0) in 501ms
+44055           Received from 0:ALIVE (v:0, logsize: 20)
+44056           Msg rcv: ALIVE (v:0, logsize: 20)
+44104           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44154           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44206           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44257           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44308           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44359           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44411           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44461           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44512           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44556           Suspecting leader (0) in 500ms
+44556           Received from 0:ALIVE (v:0, logsize: 20)
+44556           Msg rcv: ALIVE (v:0, logsize: 20)
+44564           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44614           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44665           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44716           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44768           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44819           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44870           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44921           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+44973           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45024           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45057           Suspecting leader (0) in 499ms
+45057           Received from 0:ALIVE (v:0, logsize: 20)
+45058           Msg rcv: ALIVE (v:0, logsize: 20)
+45075           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45126           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45176           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45227           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45278           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45329           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45381           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45431           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45482           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45533           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45558           Suspecting leader (0) in 500ms
+45559           Received from 0:ALIVE (v:0, logsize: 20)
+45559           Msg rcv: ALIVE (v:0, logsize: 20)
+45584           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45635           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45686           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45738           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45788           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45840           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45891           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45942           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+45993           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46044           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46059           Suspecting leader (0) in 500ms
+46059           Received from 0:ALIVE (v:0, logsize: 20)
+46060           Msg rcv: ALIVE (v:0, logsize: 20)
+46095           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46146           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46197           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46248           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46299           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46350           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46402           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46453           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46504           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46555           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46560           Suspecting leader (0) in 500ms
+46560           Received from 0:ALIVE (v:0, logsize: 20)
+46561           Msg rcv: ALIVE (v:0, logsize: 20)
+46607           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46658           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46709           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46760           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46811           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46863           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46914           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+46965           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47017           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47061           Suspecting leader (0) in 500ms
+47061           Received from 0:ALIVE (v:0, logsize: 20)
+47062           Msg rcv: ALIVE (v:0, logsize: 20)
+47068           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47119           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47170           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47221           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47272           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47323           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47374           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47426           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47477           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47528           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47563           Suspecting leader (0) in 499ms
+47563           Received from 0:ALIVE (v:0, logsize: 20)
+47563           Msg rcv: ALIVE (v:0, logsize: 20)
+47579           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47631           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47682           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47733           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47784           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47835           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47886           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47937           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+47988           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48040           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48063           Suspecting leader (0) in 500ms
+48064           Received from 0:ALIVE (v:0, logsize: 20)
+48064           Msg rcv: ALIVE (v:0, logsize: 20)
+48091           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48142           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48193           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48244           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48296           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48346           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48398           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48449           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48500           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48551           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48563           Suspecting leader (0) in 501ms
+48565           Received from 0:ALIVE (v:0, logsize: 20)
+48565           Msg rcv: ALIVE (v:0, logsize: 20)
+48602           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48653           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48704           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48756           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48806           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48857           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48908           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+48959           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49011           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49062           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49066           Suspecting leader (0) in 500ms
+49066           Received from 0:ALIVE (v:0, logsize: 20)
+49066           Msg rcv: ALIVE (v:0, logsize: 20)
+49113           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49164           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49215           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49267           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49318           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49369           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49420           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49471           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49522           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49567           Suspecting leader (0) in 499ms
+49567           Received from 0:ALIVE (v:0, logsize: 20)
+49568           Msg rcv: ALIVE (v:0, logsize: 20)
+49574           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49624           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49675           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49726           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49778           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49829           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49881           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49931           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+49983           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50034           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50067           Suspecting leader (0) in 501ms
+50069           Received from 0:ALIVE (v:0, logsize: 20)
+50069           Msg rcv: ALIVE (v:0, logsize: 20)
+50085           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50136           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50188           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50238           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50289           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50340           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50391           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50443           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50494           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50544           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50570           Suspecting leader (0) in 499ms
+50570           Received from 0:ALIVE (v:0, logsize: 20)
+50570           Msg rcv: ALIVE (v:0, logsize: 20)
+50595           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50647           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50697           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50748           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50800           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50851           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50902           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+50953           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51004           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51054           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51070           Suspecting leader (0) in 500ms
+51071           Received from 0:ALIVE (v:0, logsize: 20)
+51072           Msg rcv: ALIVE (v:0, logsize: 20)
+51106           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51157           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51208           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51258           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51309           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51360           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51411           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51463           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51514           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51565           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51571           Suspecting leader (0) in 501ms
+51573           Received from 0:ALIVE (v:0, logsize: 20)
+51573           Msg rcv: ALIVE (v:0, logsize: 20)
+51616           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51667           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51718           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51769           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51820           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51870           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51921           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+51972           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52023           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52073           Suspecting leader (0) in 500ms
+52074           Received from 0:ALIVE (v:0, logsize: 20)
+52074           Msg rcv: ALIVE (v:0, logsize: 20)
+52074           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52126           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52177           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52228           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52279           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52330           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52380           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52431           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52481           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52533           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52573           Suspecting leader (0) in 501ms
+52576           Received from 0:ALIVE (v:0, logsize: 20)
+52576           Msg rcv: ALIVE (v:0, logsize: 20)
+52584           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52635           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52686           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52737           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52788           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52840           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52891           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52942           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+52993           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53043           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53076           Suspecting leader (0) in 500ms
+53077           Received from 0:ALIVE (v:0, logsize: 20)
+53077           Msg rcv: ALIVE (v:0, logsize: 20)
+53094           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53146           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53197           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53247           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53298           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53350           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53400           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53451           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53501           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53553           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53577           Suspecting leader (0) in 500ms
+53578           Received from 0:ALIVE (v:0, logsize: 20)
+53578           Msg rcv: ALIVE (v:0, logsize: 20)
+53604           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53655           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53706           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53758           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53809           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53859           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53910           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+53961           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54012           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54064           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54078           Suspecting leader (0) in 500ms
+54079           Received from 0:ALIVE (v:0, logsize: 20)
+54079           Msg rcv: ALIVE (v:0, logsize: 20)
+54114           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54166           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54217           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54268           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54319           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54370           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54421           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54472           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54524           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54575           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54579           Suspecting leader (0) in 501ms
+54580           Received from 0:ALIVE (v:0, logsize: 20)
+54580           Msg rcv: ALIVE (v:0, logsize: 20)
+54626           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54677           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54728           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54779           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54831           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54882           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54933           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+54984           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55035           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55081           Suspecting leader (0) in 499ms
+55082           Received from 0:ALIVE (v:0, logsize: 20)
+55082           Msg rcv: ALIVE (v:0, logsize: 20)
+55086           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55137           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55187           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55238           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55289           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55339           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55390           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55434           Error reading message
+java.io.EOFException
+	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:290)
+	at lsr.paxos.messages.MessageFactory.create(MessageFactory.java:40)
+	at lsr.paxos.network.TcpConnection$ReceiverThread.run(TcpConnection.java:138)
+	at java.lang.Thread.run(Thread.java:724)
+55435           Closing socket ...
+55435           Socket closed.
+55435           Waiting for tcp connection to 0
+55440           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55491           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55542           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55581           Suspecting leader (0) in 501ms
+55593           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55644           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55696           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55747           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55798           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55849           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55900           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+55952           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+56003           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+56054           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+56083           Suspecting 0 on view 2
+56084           startProposer() handler
+56084           Msg rcv: Prepare(v:3, firstUncommitted: 20)
+56084           Resending in: 3531
+56084           Sending next Alive in 500ms
+56084           Preparing view: 3
+56084           Received from 1:ALIVE (v:1, logsize: 20)
+56084           Prepare(v:3, firstUncommitted: 20) From 1
+56084           Msg rcv: ALIVE (v:1, logsize: 20)
+56084           Sending PrepareOK(v:3, values: [])
+56085           Msg rcv: PrepareOK(v:3, values: [])
+56085           Received from 1: PrepareOK(v:3, values: [])
+56104           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826
+56156           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357826

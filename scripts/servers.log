@@ -1,0 +1,2247 @@
+-3              Configuration loaded from file: paxos.properties
+23              [p0] localhost, ports = (replica=2021, client=3001)
+24              [p1] localhost, ports = (replica=2022, client=3002)
+40              Property not found: MayShareSnapshots. Using default value: true
+42              Processes:
+  [p0] localhost, ports = (replica=2021, client=3001)
+  [p1] localhost, ports = (replica=2022, client=3002)
+Properties:
+  BatchSize=65507
+  BenchmarkRunClient=false
+  BenchmarkRunReplica=false
+  ClientIDGenerator=TimeBased
+  CrashModel=CrashStop
+  FDSendTimeout=500
+  FDSuspectTimeout=1000
+  FirstSnapshotEstimateBytes=1024
+  LogPath=jpaxosLogs
+  MaxBatchDelay=10
+  MaxUDPPacketSize=65507
+  MinLogSizeForRatioCheckBytes=10240
+  MinimumInstancesForSnapshotRatioSample=50
+  Network=TCP
+  PeriodicCatchupMilisecs=2000
+  RetransmitTimeoutMilisecs=1000
+  SnapshotAskRatio=1.0
+  SnapshotForceRatio=2.0
+  TcpReconnectMilisecs=1000
+  WindowSize=2
+  process.0=localhost:2021:3001
+  process.1=localhost:2022:3002
+  replica.ClientBatchAckTimeout=50
+  replica.ForwardClientRequests=true
+  replica.ForwardMaxBatchDelay=50
+  replica.ForwardMaxBatchSize=1450
+  replica.SelectorThreads=-1
+  test.LeaderPromoter.Interval=10000
+43              Configuration: WindowSize=2, BatchSize=65507, MaxBatchDelay=10, MaxUDPPacketSize=65507, Network=TCP, MayShareSnapshots=true, BenchmarkRunReplica=false, ClientIDGenerator=TimeBased
+43              Failure Detection: FDSendTimeout=500, FDSuspectTimeout=1000
+43              Crash model: CrashStop, LogPath: jpaxosLogs
+43              FirstSnapshotEstimateBytes=1024, MinLogSizeForRatioCheckBytes=10240, SnapshotAskRatio=1.0, SnapshotForceRatio=2.0, MinimumInstancesForSnapshotRatioSample=50
+43              RetransmitTimeoutMilisecs=1000, PeriodicCatchupMilisecs=2000, TcpReconnectMilisecs=1000
+45              Recovery phase started.
+58              Starting snapshot maintainer
+71              Opening port: 2021
+78              Opening port: 2021
+80              Network: lsr.paxos.network.TcpNetwork
+95              Registering: pendingProposals, class java.util.ArrayDeque
+102             Registering: BatcherQueue, class java.util.concurrent.ArrayBlockingQueue
+114             Registering: Replica-0-Forward, class java.util.HashMap$Values
+114             Registering: Replica-1-Forward, class java.util.HashMap$Values
+115             replica.ClientBatchAckTimeout = 50
+115             Registering: ReqManExec, class java.util.HashMap$EntrySet
+116             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+116             replica.ForwardMaxBatchDelay=50
+116             replica.ForwardMaxBatchSize=1450
+117             Registering: CReqBatcher, class java.util.concurrent.ArrayBlockingQueue
+117             Registering: pendingCReqs, class java.util.concurrent.ConcurrentHashMap$Values
+119             Number of selector threads computed dynamically. Processors: 4, selectors: 2
+119             replica.SelectorThreads=2
+127             Selector started.
+127             Recovery phase finished. Starting paxos protocol.
+127             Selector started.
+127             startPaxos
+129             UdpReader thread started. Waiting for UDP messages
+129             Creating connection: [p1] localhost, ports = (replica=2022, client=3002) - true
+131             Waiting for tcp connection to 1
+131             TcpNetwork thread started
+132             ActiveRetransmitter starting
+132             Starting failure detector
+132             Suspecting leader (1) in 1000ms
+131             Registering: ReplicaIOSnd-1, class java.util.concurrent.ArrayBlockingQueue
+132             RcvdBuffer: 4194304, SendBuffer: 4194304
+132             Suspecting 0 on view 0
+132             ActiveBatcher starting
+133             Connecting to: [p1] localhost, ports = (replica=2022, client=3002)
+133             Sender thread started.
+134             startProposer() handler
+134             Ignoring suspicion for view 0. Current view: 1
+137             TCP connection with replica 1 failed
+167             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+218             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+269             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+320             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+371             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+423             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+474             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+525             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+576             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+627             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+678             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+729             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+780             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+831             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+882             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+934             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+985             Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1037            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1088            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1134            Suspecting 1 on view 1
+1134            startProposer() handler
+1135            Sending next Alive in 500ms
+1136            Msg rcv: Prepare(v:2, firstUncommitted: 0)
+1137            Dropping message, not connected. To: 1. 0
+1137            Resending in: 2999
+1137            Preparing view: 2
+1138            Prepare(v:2, firstUncommitted: 0) From 0
+1138            RcvdBuffer: 4194304, SendBuffer: 4194304
+1138            Received from 0:ALIVE (v:0, logsize: 0)
+1138            Connecting to: [p1] localhost, ports = (replica=2022, client=3002)
+1139            Sending PrepareOK(v:2, values: [])
+1139            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1139            Msg rcv: ALIVE (v:0, logsize: 0)
+1139            TCP connection with replica 1 failed
+1139            Msg rcv: PrepareOK(v:2, values: [])
+1140            Received from 0: PrepareOK(v:2, values: [])
+1189            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1241            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1292            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1343            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1368            Received from 1:ALIVE (v:1, logsize: 0)
+1368            Msg rcv: ALIVE (v:1, logsize: 0)
+1394            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1446            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1497            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1548            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1599            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1636            Sending next Alive in 1ms
+1638            Sending next Alive in 500ms
+1638            Received from 0:ALIVE (v:0, logsize: 0)
+1638            Msg rcv: ALIVE (v:0, logsize: 0)
+1651            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1702            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1753            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1805            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1855            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1871            Received from 1:ALIVE (v:1, logsize: 0)
+1871            Msg rcv: ALIVE (v:1, logsize: 0)
+1907            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+1958            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2009            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2060            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2112            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2139            Sending next Alive in 500ms
+2139            Received from 0:ALIVE (v:0, logsize: 0)
+2139            Msg rcv: ALIVE (v:0, logsize: 0)
+2141            RcvdBuffer: 4194304, SendBuffer: 4194304
+2141            Connecting to: [p1] localhost, ports = (replica=2022, client=3002)
+2142            Tcp connected 1
+2163            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2214            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2264            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2316            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2367            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2372            Received from 1:ALIVE (v:1, logsize: 0)
+2372            Msg rcv: ALIVE (v:1, logsize: 0)
+2418            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2469            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2520            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2570            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2621            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2640            Sending next Alive in 500ms
+2641            Received from 0:ALIVE (v:0, logsize: 0)
+2641            Msg rcv: ALIVE (v:0, logsize: 0)
+2671            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2722            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2773            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2825            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2874            Received from 1:ALIVE (v:1, logsize: 0)
+2874            Msg rcv: ALIVE (v:1, logsize: 0)
+2875            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2926            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+2977            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3028            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3079            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3130            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3142            Sending next Alive in 500ms
+3142            Received from 0:ALIVE (v:0, logsize: 0)
+3142            Msg rcv: ALIVE (v:0, logsize: 0)
+3181            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3232            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3284            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3334            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3375            Received from 1:ALIVE (v:1, logsize: 0)
+3375            Msg rcv: ALIVE (v:1, logsize: 0)
+3386            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3437            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3489            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3540            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3591            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3641            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3643            Sending next Alive in 500ms
+3643            Received from 0:ALIVE (v:0, logsize: 0)
+3643            Msg rcv: ALIVE (v:0, logsize: 0)
+3693            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3744            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3795            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3846            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3877            Received from 1:ALIVE (v:1, logsize: 0)
+3877            Msg rcv: ALIVE (v:1, logsize: 0)
+3897            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3948            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+3999            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4050            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4102            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4137            Resending in: 3000
+4140            Received [1] PrepareOK(v:2, values: []) size: 21
+4140            Msg rcv: PrepareOK(v:2, values: [])
+4140            Received from 1: PrepareOK(v:2, values: [])
+4141            View prepared 2
+4141            Resuming batcher.
+4141            FirstNotCommitted: 0, max: 0
+4142            From Paxos log. Decided: [], Known: []
+4143            Before updating: Lower: [1, 1], firstNotProposed: [1, 1], upper: [1, 1]
+4143            After updating: Lower: [1, 1], firstNotProposed: [1, 1], upper: [1, 1]
+4144            Sending next Alive in 493ms
+4153            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4205            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4255            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4307            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4358            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4409            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4460            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4511            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4563            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4614            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4638            Sending next Alive in 500ms
+4638            Received from 0:ALIVE (v:0, logsize: 0)
+4639            Msg rcv: ALIVE (v:0, logsize: 0)
+4664            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4716            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4767            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4818            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4869            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4921            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+4972            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5023            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5074            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5125            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5139            Sending next Alive in 500ms
+5139            Received from 0:ALIVE (v:0, logsize: 0)
+5139            Msg rcv: ALIVE (v:0, logsize: 0)
+5176            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5227            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5279            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5330            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5381            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5433            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5484            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5535            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5586            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5638            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5640            Sending next Alive in 500ms
+5640            Received from 0:ALIVE (v:0, logsize: 0)
+5641            Msg rcv: ALIVE (v:0, logsize: 0)
+5688            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5739            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5790            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5841            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5892            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5943            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+5994            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6046            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6096            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6141            Sending next Alive in 500ms
+6141            Received from 0:ALIVE (v:0, logsize: 0)
+6142            Msg rcv: ALIVE (v:0, logsize: 0)
+6147            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6198            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6250            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6301            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6352            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6403            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6455            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6506            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6557            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6608            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6642            Sending next Alive in 500ms
+6642            Received from 0:ALIVE (v:0, logsize: 0)
+6643            Msg rcv: ALIVE (v:0, logsize: 0)
+6659            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6709            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6761            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6811            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6862            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6913            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+6964            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7015            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7067            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7118            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7143            Sending next Alive in 500ms
+7143            Received from 0:ALIVE (v:0, logsize: 0)
+7143            Msg rcv: ALIVE (v:0, logsize: 0)
+7169            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7220            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7271            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7321            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7372            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7423            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7475            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7526            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7577            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7629            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7644            Sending next Alive in 500ms
+7644            Received from 0:ALIVE (v:0, logsize: 0)
+7645            Msg rcv: ALIVE (v:0, logsize: 0)
+7680            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7731            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7782            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7833            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7885            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7935            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+7986            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8037            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8088            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8140            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8146            Sending next Alive in 500ms
+8146            Received from 0:ALIVE (v:0, logsize: 0)
+8146            Msg rcv: ALIVE (v:0, logsize: 0)
+8191            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8243            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8294            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8345            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8396            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8448            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8498            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8550            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8601            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8647            Sending next Alive in 500ms
+8647            Received from 0:ALIVE (v:0, logsize: 0)
+8647            Msg rcv: ALIVE (v:0, logsize: 0)
+8652            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8703            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8755            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8806            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8858            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8909            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+8960            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9011            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9063            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9114            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9148            Sending next Alive in 500ms
+9148            Received from 0:ALIVE (v:0, logsize: 0)
+9148            Msg rcv: ALIVE (v:0, logsize: 0)
+9165            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9216            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9267            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9318            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9369            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9420            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9471            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9522            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9573            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9624            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9649            Sending next Alive in 500ms
+9649            Received from 0:ALIVE (v:0, logsize: 0)
+9650            Msg rcv: ALIVE (v:0, logsize: 0)
+9675            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9726            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9777            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9828            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9879            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9929            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+9980            Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10031           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10083           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10134           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10150           Sending next Alive in 500ms
+10150           Received from 0:ALIVE (v:0, logsize: 0)
+10150           Msg rcv: ALIVE (v:0, logsize: 0)
+10185           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10236           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10287           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10338           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10389           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10441           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10492           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10544           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10594           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10645           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10651           Sending next Alive in 500ms
+10651           Received from 0:ALIVE (v:0, logsize: 0)
+10652           Msg rcv: ALIVE (v:0, logsize: 0)
+10697           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10748           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10798           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10850           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10901           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+10953           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11004           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11055           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11107           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11152           Sending next Alive in 500ms
+11153           Received from 0:ALIVE (v:0, logsize: 0)
+11153           Msg rcv: ALIVE (v:0, logsize: 0)
+11157           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11209           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11259           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11311           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11362           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11413           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11464           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11515           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11566           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11618           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11653           Sending next Alive in 500ms
+11653           Received from 0:ALIVE (v:0, logsize: 0)
+11654           Msg rcv: ALIVE (v:0, logsize: 0)
+11669           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11720           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11771           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11823           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11874           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11925           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+11976           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12027           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12079           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12130           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12155           Sending next Alive in 500ms
+12155           Received from 0:ALIVE (v:0, logsize: 0)
+12155           Msg rcv: ALIVE (v:0, logsize: 0)
+12181           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12232           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12283           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12334           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12385           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12436           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12488           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12539           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12590           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12641           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12655           Sending next Alive in 500ms
+12656           Received from 0:ALIVE (v:0, logsize: 0)
+12656           Msg rcv: ALIVE (v:0, logsize: 0)
+12693           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12744           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12795           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12846           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12896           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12947           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+12998           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13050           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13101           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13151           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13156           Sending next Alive in 500ms
+13157           Received from 0:ALIVE (v:0, logsize: 0)
+13157           Msg rcv: ALIVE (v:0, logsize: 0)
+13203           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13254           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13305           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13357           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13407           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13459           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13510           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13561           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13612           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13657           Sending next Alive in 500ms
+13657           Received from 0:ALIVE (v:0, logsize: 0)
+13658           Msg rcv: ALIVE (v:0, logsize: 0)
+13663           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13713           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13764           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13815           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13866           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13917           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+13969           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14020           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14071           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14122           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14159           Sending next Alive in 500ms
+14159           Received from 0:ALIVE (v:0, logsize: 0)
+14159           Msg rcv: ALIVE (v:0, logsize: 0)
+14173           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14224           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14275           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14326           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14377           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14429           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14480           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14531           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14582           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14632           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14660           Sending next Alive in 500ms
+14660           Received from 0:ALIVE (v:0, logsize: 0)
+14660           Msg rcv: ALIVE (v:0, logsize: 0)
+14683           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14734           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14786           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14836           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14888           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14939           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+14990           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15041           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15092           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15144           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15161           Sending next Alive in 500ms
+15161           Received from 0:ALIVE (v:0, logsize: 0)
+15161           Msg rcv: ALIVE (v:0, logsize: 0)
+15195           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15246           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15297           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15349           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15400           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15451           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15502           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15554           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15604           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15655           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15662           Sending next Alive in 500ms
+15662           Received from 0:ALIVE (v:0, logsize: 0)
+15662           Msg rcv: ALIVE (v:0, logsize: 0)
+15707           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15757           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15808           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15859           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15911           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+15961           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16012           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16063           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16114           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16162           Sending next Alive in 500ms
+16162           Received from 0:ALIVE (v:0, logsize: 0)
+16163           Msg rcv: ALIVE (v:0, logsize: 0)
+16165           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16217           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16268           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16319           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16370           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16421           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16472           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16522           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16573           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16624           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16664           Sending next Alive in 500ms
+16664           Received from 0:ALIVE (v:0, logsize: 0)
+16664           Msg rcv: ALIVE (v:0, logsize: 0)
+16676           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16726           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16777           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16827           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16879           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16930           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+16981           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17032           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17083           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17134           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17165           Sending next Alive in 500ms
+17165           Received from 0:ALIVE (v:0, logsize: 0)
+17165           Msg rcv: ALIVE (v:0, logsize: 0)
+17185           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17236           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17287           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17338           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17389           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17441           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17492           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17542           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17594           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17645           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17666           Sending next Alive in 500ms
+17666           Received from 0:ALIVE (v:0, logsize: 0)
+17667           Msg rcv: ALIVE (v:0, logsize: 0)
+17695           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17747           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17798           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17849           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17901           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+17952           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18003           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18054           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18104           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18156           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18167           Sending next Alive in 500ms
+18167           Received from 0:ALIVE (v:0, logsize: 0)
+18167           Msg rcv: ALIVE (v:0, logsize: 0)
+18206           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18258           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18309           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18359           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18410           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18461           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18513           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18564           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18615           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18667           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18667           Sending next Alive in 500ms
+18667           Received from 0:ALIVE (v:0, logsize: 0)
+18668           Msg rcv: ALIVE (v:0, logsize: 0)
+18717           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18769           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18820           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18871           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18922           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+18973           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19024           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19076           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19126           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19169           Sending next Alive in 500ms
+19169           Received from 0:ALIVE (v:0, logsize: 0)
+19169           Msg rcv: ALIVE (v:0, logsize: 0)
+19177           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19228           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19280           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19331           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19382           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19433           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19484           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19534           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19586           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19637           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19670           Sending next Alive in 500ms
+19670           Received from 0:ALIVE (v:0, logsize: 0)
+19670           Msg rcv: ALIVE (v:0, logsize: 0)
+19688           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19739           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19790           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19840           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19891           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19942           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+19993           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20044           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20095           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20146           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20171           Sending next Alive in 500ms
+20171           Received from 0:ALIVE (v:0, logsize: 0)
+20172           Msg rcv: ALIVE (v:0, logsize: 0)
+20197           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20248           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20300           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20351           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20403           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20454           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20505           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20556           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20608           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20659           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20673           Sending next Alive in 500ms
+20673           Received from 0:ALIVE (v:0, logsize: 0)
+20673           Msg rcv: ALIVE (v:0, logsize: 0)
+20710           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20761           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20812           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20863           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20914           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+20965           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21017           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21068           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21119           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21170           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21174           Sending next Alive in 500ms
+21174           Received from 0:ALIVE (v:0, logsize: 0)
+21174           Msg rcv: ALIVE (v:0, logsize: 0)
+21221           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21271           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21322           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21373           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21424           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21475           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21527           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21578           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21629           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21675           Sending next Alive in 500ms
+21675           Received from 0:ALIVE (v:0, logsize: 0)
+21675           Msg rcv: ALIVE (v:0, logsize: 0)
+21680           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21731           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21781           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21832           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21883           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21934           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+21985           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22036           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22087           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22138           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22176           Sending next Alive in 500ms
+22176           Received from 0:ALIVE (v:0, logsize: 0)
+22176           Msg rcv: ALIVE (v:0, logsize: 0)
+22189           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22240           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22291           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22342           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22393           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22444           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22495           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22547           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22598           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22649           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22677           Sending next Alive in 500ms
+22677           Received from 0:ALIVE (v:0, logsize: 0)
+22677           Msg rcv: ALIVE (v:0, logsize: 0)
+22700           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22751           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22801           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22853           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22904           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+22955           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23006           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23058           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23109           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23160           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23178           Sending next Alive in 500ms
+23178           Received from 0:ALIVE (v:0, logsize: 0)
+23178           Msg rcv: ALIVE (v:0, logsize: 0)
+23212           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23263           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23314           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23365           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23417           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23468           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23520           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23571           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23621           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23673           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23679           Sending next Alive in 500ms
+23679           Received from 0:ALIVE (v:0, logsize: 0)
+23679           Msg rcv: ALIVE (v:0, logsize: 0)
+23724           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23774           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23826           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23877           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23928           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+23979           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24030           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24081           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24132           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24180           Sending next Alive in 500ms
+24180           Received from 0:ALIVE (v:0, logsize: 0)
+24181           Msg rcv: ALIVE (v:0, logsize: 0)
+24183           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24234           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24284           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24335           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24386           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24437           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24489           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24539           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24591           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24642           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24681           Sending next Alive in 500ms
+24682           Received from 0:ALIVE (v:0, logsize: 0)
+24682           Msg rcv: ALIVE (v:0, logsize: 0)
+24693           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24743           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24794           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24845           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24896           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24947           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+24998           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25049           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25101           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25152           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25183           Sending next Alive in 500ms
+25183           Received from 0:ALIVE (v:0, logsize: 0)
+25183           Msg rcv: ALIVE (v:0, logsize: 0)
+25203           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25255           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25305           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25356           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25407           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25459           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25509           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25560           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25612           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25663           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25684           Received from 0:ALIVE (v:0, logsize: 0)
+25684           Sending next Alive in 500ms
+25685           Msg rcv: ALIVE (v:0, logsize: 0)
+25714           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25765           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25816           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25867           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25918           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+25969           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26020           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26071           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26122           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26173           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26186           Sending next Alive in 500ms
+26186           Received from 0:ALIVE (v:0, logsize: 0)
+26186           Msg rcv: ALIVE (v:0, logsize: 0)
+26224           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26275           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26326           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26377           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26428           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26480           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26531           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26581           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26632           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26683           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26687           Sending next Alive in 500ms
+26687           Received from 0:ALIVE (v:0, logsize: 0)
+26688           Msg rcv: ALIVE (v:0, logsize: 0)
+26734           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26785           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26836           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26887           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26938           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+26990           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27041           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27092           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27144           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27188           Sending next Alive in 500ms
+27189           Received from 0:ALIVE (v:0, logsize: 0)
+27189           Msg rcv: ALIVE (v:0, logsize: 0)
+27195           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27246           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27297           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27348           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27399           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27451           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27502           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27553           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27604           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27656           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27689           Sending next Alive in 500ms
+27689           Received from 0:ALIVE (v:0, logsize: 0)
+27689           Msg rcv: ALIVE (v:0, logsize: 0)
+27707           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27757           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27808           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27859           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27911           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+27961           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28012           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28063           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28114           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28165           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28190           Sending next Alive in 500ms
+28190           Received from 0:ALIVE (v:0, logsize: 0)
+28190           Msg rcv: ALIVE (v:0, logsize: 0)
+28216           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28268           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28319           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28370           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28421           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28472           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28523           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28574           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28625           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28676           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28691           Sending next Alive in 500ms
+28691           Received from 0:ALIVE (v:0, logsize: 0)
+28691           Msg rcv: ALIVE (v:0, logsize: 0)
+28727           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28778           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28830           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28881           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28931           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+28983           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29034           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29085           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29136           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29187           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29192           Sending next Alive in 500ms
+29192           Received from 0:ALIVE (v:0, logsize: 0)
+29192           Msg rcv: ALIVE (v:0, logsize: 0)
+29238           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29289           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29340           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29391           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29442           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29493           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29544           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29595           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29646           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29693           Sending next Alive in 500ms
+29693           Received from 0:ALIVE (v:0, logsize: 0)
+29693           Msg rcv: ALIVE (v:0, logsize: 0)
+29696           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29748           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29798           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29850           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29901           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+29952           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30003           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30055           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30105           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30156           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30194           Sending next Alive in 500ms
+30194           Received from 0:ALIVE (v:0, logsize: 0)
+30194           Msg rcv: ALIVE (v:0, logsize: 0)
+30207           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30258           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30309           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30360           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30412           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30463           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30514           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30565           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30616           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30667           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30696           Sending next Alive in 500ms
+30696           Received from 0:ALIVE (v:0, logsize: 0)
+30696           Msg rcv: ALIVE (v:0, logsize: 0)
+30718           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30770           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30821           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30872           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30924           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+30975           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31026           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31077           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31128           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31179           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31196           Sending next Alive in 500ms
+31197           Received from 0:ALIVE (v:0, logsize: 0)
+31197           Msg rcv: ALIVE (v:0, logsize: 0)
+31230           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31282           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31333           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31384           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31435           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31486           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31538           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31589           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31640           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31691           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31698           Sending next Alive in 500ms
+31698           Received from 0:ALIVE (v:0, logsize: 0)
+31698           Msg rcv: ALIVE (v:0, logsize: 0)
+31742           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31794           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31844           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31895           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31946           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+31997           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+32049           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+32100           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+32151           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+32198           Sending next Alive in 500ms
+32198           Received from 0:ALIVE (v:0, logsize: 0)
+32199           Msg rcv: ALIVE (v:0, logsize: 0)
+32201           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+32253           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+32304           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+32321           Received [1] ForwardClientBatch(rid:1:1, [id=2763516637828003:1], [0, 0]) size: 149
+32323           Initializing: 1:1
+32323           New SN. Replica 1, previous:0, new: 1, All: [0, 0]
+32323           New SN. Replica 0, previous:0, new: 1, All: [0, 1]
+32323           Received request: rid:1:1, State:NotProposed, Acks: [11], stable:true
+32325           Enqueuing batch: rid:1:1, State:NotProposed, Acks: [11], stable:true
+32325           Starting batch.
+32336           Batch timeout
+32337           Batch ready. Number of requests: 1, queued reqs: 0
+32337           pendingProposals.size() = 0, MAX: 30
+32337           Scheduling proposal task
+32338           Enqueued proposal. pendingProposal.size(): 1
+32338           Propose task running
+32338           Proposing. pendingProposals.size(): 1, window used: 0
+32338           Batch dispatched.
+32338           Proposing: 0, Reqs:1:1, Size:12, k=1
+32339           Resending in: 2432
+32341           Received [1] Accept(v:2, i:0) size: 17
+32342           Msg rcv: Accept(v:2, i:0)
+32342           Decided 0, Log Size: 1
+32342           Proposing. pendingProposals.size(): 0, window used: 0
+32344           Instance: 0: [rid=1:1]
+32344           Decided: rid:1:1, State:Decided, Acks: [11], stable:true
+32344           decidedWaitingExecution.size: 1
+32344           Executing instance: 0
+32344           Executing batch: 1:1
+32345           Executing batch rid:1:1, State:Executed, Acks: [11], stable:true, instance number 0
+32345           Property not found: parallel.batch. Using default value: false
+32345           <Service> Executed request no.0
+32345           Cannot continue execution. Next instance not decided: 1
+32346           Prunning logs. rcvdUB: [0, 1] [0, 1] 
+32346           Lower: [1, 1], firstNotProposed: [1, 2], upper: [1, 2]
+32346           Lower: [1, 2], firstNotProposed: [1, 2], upper: [1, 2]
+32346           Instance finished: 0
+32356           Sleeping: 50. lastAckedVector: [0, 0] at time 1381758317687
+32356           Ack time overdue: -32191, msg: AckForwardClientBatch([0, 1])
+32407           Sleeping: 50. lastAckedVector: [0, 1] at time 1381758349928
+32413           Received [1] ForwardClientBatch(rid:1:2, [id=2763516637828003:2], [0, 1]) size: 149
+32413           Initializing: 1:2
+32413           New SN. Replica 1, previous:1, new: 2, All: [0, 1]
+32414           New SN. Replica 0, previous:1, new: 2, All: [0, 2]
+32414           Received request: rid:1:2, State:NotProposed, Acks: [11], stable:true
+32414           Enqueuing batch: rid:1:2, State:NotProposed, Acks: [11], stable:true
+32414           Starting batch.
+32425           Batch timeout
+32425           Batch ready. Number of requests: 1, queued reqs: 0
+32425           pendingProposals.size() = 0, MAX: 30
+32426           Scheduling proposal task
+32426           Enqueued proposal. pendingProposal.size(): 1
+32426           Propose task running
+32426           Proposing. pendingProposals.size(): 1, window used: 0
+32426           Batch dispatched.
+32426           Proposing: 1, Reqs:1:2, Size:12, k=1
+32426           Resending in: 1971
+32427           Received [1] Accept(v:2, i:1) size: 17
+32427           Msg rcv: Accept(v:2, i:1)
+32427           Decided 1, Log Size: 2
+32428           Proposing. pendingProposals.size(): 0, window used: 0
+32428           Instance: 1: [rid=1:2]
+32428           Decided: rid:1:2, State:Decided, Acks: [11], stable:true
+32428           decidedWaitingExecution.size: 1
+32428           Executing instance: 1
+32428           Executing batch: 1:2
+32428           Cannot continue execution. Next instance not decided: 2
+32428           Executing batch rid:1:2, State:Executed, Acks: [11], stable:true, instance number 1
+32429           Prunning logs. rcvdUB: [0, 2] [0, 2] 
+32429           Property not found: parallel.batch. Using default value: false
+32429           Lower: [1, 2], firstNotProposed: [1, 3], upper: [1, 3]
+32429           <Service> Executed request no.1
+32429           Lower: [1, 3], firstNotProposed: [1, 3], upper: [1, 3]
+32429           Instance finished: 1
+32457           Sleeping: 50. lastAckedVector: [0, 1] at time 1381758349928
+32457           Ack time overdue: -51, msg: AckForwardClientBatch([0, 2])
+32492           Received [1] ForwardClientBatch(rid:1:3, [id=2763516637828003:3], [0, 2]) size: 149
+32492           Initializing: 1:3
+32493           New SN. Replica 1, previous:2, new: 3, All: [0, 2]
+32493           New SN. Replica 0, previous:2, new: 3, All: [0, 3]
+32493           Received request: rid:1:3, State:NotProposed, Acks: [11], stable:true
+32493           Enqueuing batch: rid:1:3, State:NotProposed, Acks: [11], stable:true
+32493           Starting batch.
+32504           Batch timeout
+32504           Batch ready. Number of requests: 1, queued reqs: 0
+32504           pendingProposals.size() = 0, MAX: 30
+32505           Scheduling proposal task
+32505           Enqueued proposal. pendingProposal.size(): 1
+32505           Propose task running
+32505           Batch dispatched.
+32505           Proposing. pendingProposals.size(): 1, window used: 0
+32505           Proposing: 2, Reqs:1:3, Size:12, k=1
+32505           Resending in: 1598
+32506           Received [1] Accept(v:2, i:2) size: 17
+32506           Msg rcv: Accept(v:2, i:2)
+32506           Decided 2, Log Size: 3
+32506           Proposing. pendingProposals.size(): 0, window used: 0
+32507           Instance: 2: [rid=1:3]
+32507           Decided: rid:1:3, State:Decided, Acks: [11], stable:true
+32507           decidedWaitingExecution.size: 1
+32507           Executing instance: 2
+32507           Executing batch: 1:3
+32507           Cannot continue execution. Next instance not decided: 3
+32507           Executing batch rid:1:3, State:Executed, Acks: [11], stable:true, instance number 2
+32508           Property not found: parallel.batch. Using default value: false
+32507           Prunning logs. rcvdUB: [0, 3] [0, 3] 
+32508           <Service> Executed request no.2
+32508           Lower: [1, 3], firstNotProposed: [1, 4], upper: [1, 4]
+32508           Instance finished: 2
+32508           Lower: [1, 4], firstNotProposed: [1, 4], upper: [1, 4]
+32509           Sleeping: 50. lastAckedVector: [0, 2] at time 1381758350030
+32509           Ack time overdue: -1, msg: AckForwardClientBatch([0, 3])
+32559           Sleeping: 50. lastAckedVector: [0, 3] at time 1381758350081
+32573           Received [1] ForwardClientBatch(rid:1:4, [id=2763516637828003:4], [0, 3]) size: 149
+32573           Initializing: 1:4
+32573           New SN. Replica 1, previous:3, new: 4, All: [0, 3]
+32573           New SN. Replica 0, previous:3, new: 4, All: [0, 4]
+32573           Received request: rid:1:4, State:NotProposed, Acks: [11], stable:true
+32573           Enqueuing batch: rid:1:4, State:NotProposed, Acks: [11], stable:true
+32573           Starting batch.
+32583           Batch timeout
+32583           Batch ready. Number of requests: 1, queued reqs: 0
+32583           pendingProposals.size() = 0, MAX: 30
+32583           Scheduling proposal task
+32584           Enqueued proposal. pendingProposal.size(): 1
+32584           Propose task running
+32584           Proposing. pendingProposals.size(): 1, window used: 0
+32584           Proposing: 3, Reqs:1:4, Size:12, k=1
+32584           Batch dispatched.
+32584           Resending in: 1295
+32585           Received [1] Accept(v:2, i:3) size: 17
+32585           Msg rcv: Accept(v:2, i:3)
+32585           Decided 3, Log Size: 4
+32585           Proposing. pendingProposals.size(): 0, window used: 0
+32585           Instance: 3: [rid=1:4]
+32586           Decided: rid:1:4, State:Decided, Acks: [11], stable:true
+32586           decidedWaitingExecution.size: 1
+32586           Executing instance: 3
+32586           Executing batch: 1:4
+32586           Cannot continue execution. Next instance not decided: 4
+32586           Executing batch rid:1:4, State:Executed, Acks: [11], stable:true, instance number 3
+32586           Prunning logs. rcvdUB: [0, 4] [0, 4] 
+32586           Property not found: parallel.batch. Using default value: false
+32587           Lower: [1, 4], firstNotProposed: [1, 5], upper: [1, 5]
+32587           <Service> Executed request no.3
+32587           Lower: [1, 5], firstNotProposed: [1, 5], upper: [1, 5]
+32587           Instance finished: 3
+32611           Sleeping: 50. lastAckedVector: [0, 3] at time 1381758350081
+32611           Ack time overdue: -52, msg: AckForwardClientBatch([0, 4])
+32657           Received [1] ForwardClientBatch(rid:1:5, [id=2763516637828003:5], [0, 4]) size: 149
+32657           Initializing: 1:5
+32657           New SN. Replica 1, previous:4, new: 5, All: [0, 4]
+32658           New SN. Replica 0, previous:4, new: 5, All: [0, 5]
+32658           Received request: rid:1:5, State:NotProposed, Acks: [11], stable:true
+32658           Enqueuing batch: rid:1:5, State:NotProposed, Acks: [11], stable:true
+32658           Starting batch.
+32662           Sleeping: 50. lastAckedVector: [0, 4] at time 1381758350183
+32662           Ack time overdue: -1, msg: AckForwardClientBatch([0, 5])
+32669           Batch timeout
+32669           Batch ready. Number of requests: 1, queued reqs: 0
+32670           pendingProposals.size() = 0, MAX: 30
+32670           Scheduling proposal task
+32670           Enqueued proposal. pendingProposal.size(): 1
+32670           Propose task running
+32670           Proposing. pendingProposals.size(): 1, window used: 0
+32670           Proposing: 4, Reqs:1:5, Size:12, k=1
+32670           Batch dispatched.
+32670           Resending in: 1049
+32671           Received [1] Accept(v:2, i:4) size: 17
+32671           Msg rcv: Accept(v:2, i:4)
+32671           Decided 4, Log Size: 5
+32672           Proposing. pendingProposals.size(): 0, window used: 0
+32672           Instance: 4: [rid=1:5]
+32672           Decided: rid:1:5, State:Decided, Acks: [11], stable:true
+32672           decidedWaitingExecution.size: 1
+32672           Executing instance: 4
+32672           Executing batch: 1:5
+32672           Cannot continue execution. Next instance not decided: 5
+32672           Executing batch rid:1:5, State:Executed, Acks: [11], stable:true, instance number 4
+32673           Prunning logs. rcvdUB: [0, 5] [0, 5] 
+32673           Property not found: parallel.batch. Using default value: false
+32673           Lower: [1, 5], firstNotProposed: [1, 6], upper: [1, 6]
+32673           <Service> Executed request no.4
+32673           Lower: [1, 6], firstNotProposed: [1, 6], upper: [1, 6]
+32673           Instance finished: 4
+32699           Sending next Alive in 471ms
+32713           Sleeping: 50. lastAckedVector: [0, 5] at time 1381758350234
+32740           Received [1] ForwardClientBatch(rid:1:6, [id=2763516637828003:6], [0, 5]) size: 149
+32741           Initializing: 1:6
+32741           New SN. Replica 1, previous:5, new: 6, All: [0, 5]
+32741           New SN. Replica 0, previous:5, new: 6, All: [0, 6]
+32741           Received request: rid:1:6, State:NotProposed, Acks: [11], stable:true
+32741           Enqueuing batch: rid:1:6, State:NotProposed, Acks: [11], stable:true
+32741           Starting batch.
+32752           Batch timeout
+32753           Batch ready. Number of requests: 1, queued reqs: 0
+32753           pendingProposals.size() = 0, MAX: 30
+32753           Scheduling proposal task
+32753           Enqueued proposal. pendingProposal.size(): 1
+32753           Propose task running
+32753           Proposing. pendingProposals.size(): 1, window used: 0
+32753           Batch dispatched.
+32753           Proposing: 5, Reqs:1:6, Size:12, k=1
+32754           Resending in: 850
+32754           Received [1] Accept(v:2, i:5) size: 17
+32754           Msg rcv: Accept(v:2, i:5)
+32755           Decided 5, Log Size: 6
+32755           Proposing. pendingProposals.size(): 0, window used: 0
+32755           Instance: 5: [rid=1:6]
+32755           Decided: rid:1:6, State:Decided, Acks: [11], stable:true
+32755           decidedWaitingExecution.size: 1
+32755           Executing instance: 5
+32755           Executing batch: 1:6
+32755           Cannot continue execution. Next instance not decided: 6
+32755           Executing batch rid:1:6, State:Executed, Acks: [11], stable:true, instance number 5
+32756           Property not found: parallel.batch. Using default value: false
+32756           Prunning logs. rcvdUB: [0, 6] [0, 6] 
+32756           <Service> Executed request no.5
+32756           Instance finished: 5
+32756           Lower: [1, 6], firstNotProposed: [1, 7], upper: [1, 7]
+32756           Lower: [1, 7], firstNotProposed: [1, 7], upper: [1, 7]
+32764           Sleeping: 50. lastAckedVector: [0, 5] at time 1381758350234
+32764           Ack time overdue: -52, msg: AckForwardClientBatch([0, 6])
+32815           Sleeping: 50. lastAckedVector: [0, 6] at time 1381758350336
+32823           Received [1] ForwardClientBatch(rid:1:7, [id=2763516637828003:7], [0, 6]) size: 149
+32823           Initializing: 1:7
+32823           New SN. Replica 1, previous:6, new: 7, All: [0, 6]
+32823           New SN. Replica 0, previous:6, new: 7, All: [0, 7]
+32823           Received request: rid:1:7, State:NotProposed, Acks: [11], stable:true
+32823           Enqueuing batch: rid:1:7, State:NotProposed, Acks: [11], stable:true
+32823           Starting batch.
+32833           Batch timeout
+32833           Batch ready. Number of requests: 1, queued reqs: 0
+32833           pendingProposals.size() = 0, MAX: 30
+32833           Scheduling proposal task
+32833           Enqueued proposal. pendingProposal.size(): 1
+32833           Propose task running
+32834           Proposing. pendingProposals.size(): 1, window used: 0
+32833           Batch dispatched.
+32834           Proposing: 6, Reqs:1:7, Size:12, k=1
+32834           Resending in: 689
+32835           Received [1] Accept(v:2, i:6) size: 17
+32835           Msg rcv: Accept(v:2, i:6)
+32835           Decided 6, Log Size: 7
+32835           Proposing. pendingProposals.size(): 0, window used: 0
+32835           Instance: 6: [rid=1:7]
+32836           Decided: rid:1:7, State:Decided, Acks: [11], stable:true
+32836           decidedWaitingExecution.size: 1
+32836           Executing instance: 6
+32836           Executing batch: 1:7
+32836           Cannot continue execution. Next instance not decided: 7
+32836           Executing batch rid:1:7, State:Executed, Acks: [11], stable:true, instance number 6
+32836           Prunning logs. rcvdUB: [0, 7] [0, 7] 
+32836           Property not found: parallel.batch. Using default value: false
+32836           Lower: [1, 7], firstNotProposed: [1, 8], upper: [1, 8]
+32836           <Service> Executed request no.6
+32837           Lower: [1, 8], firstNotProposed: [1, 8], upper: [1, 8]
+32837           Instance finished: 6
+32866           Sleeping: 50. lastAckedVector: [0, 6] at time 1381758350336
+32866           Ack time overdue: -52, msg: AckForwardClientBatch([0, 7])
+32905           Received [1] ForwardClientBatch(rid:1:8, [id=2763516637828003:8], [0, 7]) size: 149
+32905           Initializing: 1:8
+32906           New SN. Replica 1, previous:7, new: 8, All: [0, 7]
+32906           New SN. Replica 0, previous:7, new: 8, All: [0, 8]
+32906           Received request: rid:1:8, State:NotProposed, Acks: [11], stable:true
+32906           Enqueuing batch: rid:1:8, State:NotProposed, Acks: [11], stable:true
+32906           Starting batch.
+32917           Batch timeout
+32917           Batch ready. Number of requests: 1, queued reqs: 0
+32917           pendingProposals.size() = 0, MAX: 30
+32917           Scheduling proposal task
+32917           Enqueued proposal. pendingProposal.size(): 1
+32917           Propose task running
+32918           Proposing. pendingProposals.size(): 1, window used: 0
+32918           Batch dispatched.
+32918           Ack time overdue: -1, msg: AckForwardClientBatch([0, 8])
+32918           Proposing: 7, Reqs:1:8, Size:12, k=1
+32918           Sleeping: 50. lastAckedVector: [0, 7] at time 1381758350439
+32918           Resending in: 559
+32919           Received [1] Accept(v:2, i:7) size: 17
+32919           Msg rcv: Accept(v:2, i:7)
+32919           Decided 7, Log Size: 8
+32920           Proposing. pendingProposals.size(): 0, window used: 0
+32920           Instance: 7: [rid=1:8]
+32920           Decided: rid:1:8, State:Decided, Acks: [11], stable:true
+32920           decidedWaitingExecution.size: 1
+32920           Executing instance: 7
+32920           Executing batch: 1:8
+32920           Cannot continue execution. Next instance not decided: 8
+32920           Executing batch rid:1:8, State:Executed, Acks: [11], stable:true, instance number 7
+32921           Prunning logs. rcvdUB: [0, 8] [0, 8] 
+32921           Property not found: parallel.batch. Using default value: false
+32921           Lower: [1, 8], firstNotProposed: [1, 9], upper: [1, 9]
+32921           <Service> Executed request no.7
+32921           Lower: [1, 9], firstNotProposed: [1, 9], upper: [1, 9]
+32921           Instance finished: 7
+32969           Sleeping: 50. lastAckedVector: [0, 8] at time 1381758350490
+32982           Received [1] ForwardClientBatch(rid:1:9, [id=2763516637828003:9], [0, 8]) size: 149
+32982           Initializing: 1:9
+32982           New SN. Replica 1, previous:8, new: 9, All: [0, 8]
+32982           New SN. Replica 0, previous:8, new: 9, All: [0, 9]
+32983           Received request: rid:1:9, State:NotProposed, Acks: [11], stable:true
+32983           Enqueuing batch: rid:1:9, State:NotProposed, Acks: [11], stable:true
+32983           Starting batch.
+32994           Batch timeout
+32994           Batch ready. Number of requests: 1, queued reqs: 0
+32994           pendingProposals.size() = 0, MAX: 30
+32994           Scheduling proposal task
+32994           Enqueued proposal. pendingProposal.size(): 1
+32994           Propose task running
+32995           Proposing. pendingProposals.size(): 1, window used: 0
+32995           Proposing: 8, Reqs:1:9, Size:12, k=1
+32995           Batch dispatched.
+32995           Resending in: 453
+32996           Received [1] Accept(v:2, i:8) size: 17
+32996           Msg rcv: Accept(v:2, i:8)
+32996           Decided 8, Log Size: 9
+32996           Proposing. pendingProposals.size(): 0, window used: 0
+32996           Instance: 8: [rid=1:9]
+32996           Decided: rid:1:9, State:Decided, Acks: [11], stable:true
+32997           decidedWaitingExecution.size: 1
+32997           Executing instance: 8
+32997           Executing batch: 1:9
+32997           Cannot continue execution. Next instance not decided: 9
+32997           Prunning logs. rcvdUB: [0, 9] [0, 9] 
+32997           Executing batch rid:1:9, State:Executed, Acks: [11], stable:true, instance number 8
+32997           Lower: [1, 9], firstNotProposed: [1, 10], upper: [1, 10]
+32997           Property not found: parallel.batch. Using default value: false
+32998           Lower: [1, 10], firstNotProposed: [1, 10], upper: [1, 10]
+32998           <Service> Executed request no.8
+32998           Instance finished: 8
+33020           Sleeping: 50. lastAckedVector: [0, 8] at time 1381758350490
+33020           Ack time overdue: -52, msg: AckForwardClientBatch([0, 9])
+33066           Received [1] ForwardClientBatch(rid:1:10, [id=2763516637828003:10], [0, 9]) size: 149
+33067           Initializing: 1:10
+33067           New SN. Replica 1, previous:9, new: 10, All: [0, 9]
+33067           New SN. Replica 0, previous:9, new: 10, All: [0, 10]
+33067           Received request: rid:1:10, State:NotProposed, Acks: [11], stable:true
+33067           Enqueuing batch: rid:1:10, State:NotProposed, Acks: [11], stable:true
+33067           Starting batch.
+33071           Sleeping: 50. lastAckedVector: [0, 9] at time 1381758350593
+33071           Ack time overdue: 0, msg: AckForwardClientBatch([0, 10])
+33078           Batch timeout
+33078           Batch ready. Number of requests: 1, queued reqs: 0
+33078           pendingProposals.size() = 0, MAX: 30
+33078           Scheduling proposal task
+33078           Enqueued proposal. pendingProposal.size(): 1
+33078           Propose task running
+33078           Proposing. pendingProposals.size(): 1, window used: 0
+33079           Proposing: 9, Reqs:1:10, Size:12, k=1
+33078           Batch dispatched.
+33079           Resending in: 368
+33079           Received [1] Accept(v:2, i:9) size: 17
+33080           Msg rcv: Accept(v:2, i:9)
+33080           Decided 9, Log Size: 10
+33080           Proposing. pendingProposals.size(): 0, window used: 0
+33080           Instance: 9: [rid=1:10]
+33080           Decided: rid:1:10, State:Decided, Acks: [11], stable:true
+33080           decidedWaitingExecution.size: 1
+33081           Executing instance: 9
+33081           Executing batch: 1:10
+33081           Cannot continue execution. Next instance not decided: 10
+33081           Executing batch rid:1:10, State:Executed, Acks: [11], stable:true, instance number 9
+33081           Prunning logs. rcvdUB: [0, 10] [0, 10] 
+33081           Property not found: parallel.batch. Using default value: false
+33081           Lower: [1, 10], firstNotProposed: [1, 11], upper: [1, 11]
+33081           <Service> Executed request no.9
+33081           Lower: [1, 11], firstNotProposed: [1, 11], upper: [1, 11]
+33081           Instance finished: 9
+33123           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33171           Sending next Alive in 408ms
+33174           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33225           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33276           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33327           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33379           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33430           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33481           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33532           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33580           Sending next Alive in 500ms
+33580           Received from 0:ALIVE (v:0, logsize: 10)
+33580           Msg rcv: ALIVE (v:0, logsize: 10)
+33583           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33633           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33685           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33736           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33787           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33838           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33890           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33940           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+33991           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34042           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34081           Sending next Alive in 500ms
+34081           Received from 0:ALIVE (v:0, logsize: 10)
+34081           Msg rcv: ALIVE (v:0, logsize: 10)
+34093           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34144           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34195           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34246           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34298           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34348           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34400           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34450           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34501           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34552           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34582           Sending next Alive in 500ms
+34582           Received from 0:ALIVE (v:0, logsize: 10)
+34583           Msg rcv: ALIVE (v:0, logsize: 10)
+34603           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34654           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34705           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34757           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34807           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34859           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34909           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+34960           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35011           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35062           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35083           Sending next Alive in 500ms
+35083           Received from 0:ALIVE (v:0, logsize: 10)
+35083           Msg rcv: ALIVE (v:0, logsize: 10)
+35113           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35164           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35215           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35266           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35317           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35368           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35420           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35471           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35522           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35574           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35584           Sending next Alive in 500ms
+35584           Received from 0:ALIVE (v:0, logsize: 10)
+35585           Msg rcv: ALIVE (v:0, logsize: 10)
+35625           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35676           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35727           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35778           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35830           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35881           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35932           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+35983           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36034           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36086           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36086           Received from 0:ALIVE (v:0, logsize: 10)
+36086           Sending next Alive in 500ms
+36086           Msg rcv: ALIVE (v:0, logsize: 10)
+36136           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36188           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36239           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36290           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36341           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36392           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36444           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36494           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36545           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36587           Sending next Alive in 500ms
+36587           Received from 0:ALIVE (v:0, logsize: 10)
+36588           Msg rcv: ALIVE (v:0, logsize: 10)
+36596           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36647           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36698           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36750           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36801           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36853           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36904           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+36955           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37007           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37058           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37089           Sending next Alive in 500ms
+37089           Received from 0:ALIVE (v:0, logsize: 10)
+37089           Msg rcv: ALIVE (v:0, logsize: 10)
+37109           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37160           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37210           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37261           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37312           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37363           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37414           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37465           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37516           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37567           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37590           Sending next Alive in 500ms
+37590           Received from 0:ALIVE (v:0, logsize: 10)
+37590           Msg rcv: ALIVE (v:0, logsize: 10)
+37618           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37670           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37721           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37772           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37823           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37874           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37925           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+37977           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38028           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38079           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38091           Sending next Alive in 500ms
+38091           Received from 0:ALIVE (v:0, logsize: 10)
+38092           Msg rcv: ALIVE (v:0, logsize: 10)
+38129           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38180           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38231           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38281           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38333           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38384           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38435           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38486           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38537           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38588           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38592           Sending next Alive in 500ms
+38592           Received from 0:ALIVE (v:0, logsize: 10)
+38593           Msg rcv: ALIVE (v:0, logsize: 10)
+38639           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38691           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38742           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38793           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38845           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38896           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38947           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+38998           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39050           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39094           Received from 0:ALIVE (v:0, logsize: 10)
+39094           Sending next Alive in 500ms
+39094           Msg rcv: ALIVE (v:0, logsize: 10)
+39101           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39153           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39204           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39254           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39305           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39356           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39407           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39458           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39509           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39519           Received [1] ForwardClientBatch(rid:1:11, [id=2763516637828003:11], [0, 10]) size: 149
+39519           Initializing: 1:11
+39520           New SN. Replica 1, previous:10, new: 11, All: [0, 10]
+39520           New SN. Replica 0, previous:10, new: 11, All: [0, 11]
+39520           Received request: rid:1:11, State:NotProposed, Acks: [11], stable:true
+39520           Enqueuing batch: rid:1:11, State:NotProposed, Acks: [11], stable:true
+39520           Starting batch.
+39531           Batch timeout
+39531           Batch ready. Number of requests: 1, queued reqs: 0
+39531           pendingProposals.size() = 0, MAX: 30
+39531           Scheduling proposal task
+39531           Enqueued proposal. pendingProposal.size(): 1
+39531           Propose task running
+39531           Batch dispatched.
+39531           Proposing. pendingProposals.size(): 1, window used: 0
+39532           Proposing: 10, Reqs:1:11, Size:12, k=1
+39532           Resending in: 298
+39533           Received [1] Accept(v:2, i:10) size: 17
+39533           Msg rcv: Accept(v:2, i:10)
+39533           Decided 10, Log Size: 11
+39533           Proposing. pendingProposals.size(): 0, window used: 0
+39533           Instance: 10: [rid=1:11]
+39533           Decided: rid:1:11, State:Decided, Acks: [11], stable:true
+39533           decidedWaitingExecution.size: 1
+39533           Executing instance: 10
+39534           Executing batch: 1:11
+39534           Cannot continue execution. Next instance not decided: 11
+39534           Executing batch rid:1:11, State:Executed, Acks: [11], stable:true, instance number 10
+39534           Prunning logs. rcvdUB: [0, 11] [0, 11] 
+39534           Property not found: parallel.batch. Using default value: false
+39534           Lower: [1, 11], firstNotProposed: [1, 12], upper: [1, 12]
+39534           <Service> Executed request no.10
+39534           Lower: [1, 12], firstNotProposed: [1, 12], upper: [1, 12]
+39534           Instance finished: 10
+39559           Sleeping: 50. lastAckedVector: [0, 10] at time 1381758350644
+39559           Ack time overdue: -6437, msg: AckForwardClientBatch([0, 11])
+39595           Sending next Alive in 465ms
+39599           Received [1] ForwardClientBatch(rid:1:12, [id=2763516637828003:12], [0, 11]) size: 149
+39599           Initializing: 1:12
+39599           New SN. Replica 1, previous:11, new: 12, All: [0, 11]
+39600           New SN. Replica 0, previous:11, new: 12, All: [0, 12]
+39600           Received request: rid:1:12, State:NotProposed, Acks: [11], stable:true
+39600           Enqueuing batch: rid:1:12, State:NotProposed, Acks: [11], stable:true
+39600           Starting batch.
+39610           Sleeping: 50. lastAckedVector: [0, 11] at time 1381758357132
+39611           Ack time overdue: 0, msg: AckForwardClientBatch([0, 12])
+39611           Batch timeout
+39611           Batch ready. Number of requests: 1, queued reqs: 0
+39611           pendingProposals.size() = 0, MAX: 30
+39611           Scheduling proposal task
+39611           Enqueued proposal. pendingProposal.size(): 1
+39611           Propose task running
+39611           Batch dispatched.
+39612           Proposing. pendingProposals.size(): 1, window used: 0
+39612           Proposing: 11, Reqs:1:12, Size:12, k=1
+39612           Resending in: 242
+39612           Received [1] Accept(v:2, i:11) size: 17
+39613           Msg rcv: Accept(v:2, i:11)
+39613           Decided 11, Log Size: 12
+39613           Proposing. pendingProposals.size(): 0, window used: 0
+39613           Instance: 11: [rid=1:12]
+39613           Decided: rid:1:12, State:Decided, Acks: [11], stable:true
+39613           decidedWaitingExecution.size: 1
+39614           Executing instance: 11
+39614           Executing batch: 1:12
+39614           Cannot continue execution. Next instance not decided: 12
+39614           Executing batch rid:1:12, State:Executed, Acks: [11], stable:true, instance number 11
+39614           Prunning logs. rcvdUB: [0, 12] [0, 12] 
+39614           Property not found: parallel.batch. Using default value: false
+39614           Lower: [1, 12], firstNotProposed: [1, 13], upper: [1, 13]
+39614           <Service> Executed request no.11
+39614           Lower: [1, 13], firstNotProposed: [1, 13], upper: [1, 13]
+39614           Instance finished: 11
+39661           Sleeping: 50. lastAckedVector: [0, 12] at time 1381758357183
+39681           Received [1] ForwardClientBatch(rid:1:13, [id=2763516637828003:13], [0, 12]) size: 149
+39682           Initializing: 1:13
+39682           New SN. Replica 1, previous:12, new: 13, All: [0, 12]
+39682           New SN. Replica 0, previous:12, new: 13, All: [0, 13]
+39682           Received request: rid:1:13, State:NotProposed, Acks: [11], stable:true
+39682           Enqueuing batch: rid:1:13, State:NotProposed, Acks: [11], stable:true
+39682           Starting batch.
+39693           Batch timeout
+39694           Batch ready. Number of requests: 1, queued reqs: 0
+39694           pendingProposals.size() = 0, MAX: 30
+39694           Scheduling proposal task
+39694           Enqueued proposal. pendingProposal.size(): 1
+39694           Propose task running
+39694           Proposing. pendingProposals.size(): 1, window used: 0
+39694           Batch dispatched.
+39694           Proposing: 12, Reqs:1:13, Size:12, k=1
+39695           Resending in: 200
+39696           Received [1] Accept(v:2, i:12) size: 17
+39696           Msg rcv: Accept(v:2, i:12)
+39696           Decided 12, Log Size: 13
+39696           Proposing. pendingProposals.size(): 0, window used: 0
+39696           Instance: 12: [rid=1:13]
+39696           Decided: rid:1:13, State:Decided, Acks: [11], stable:true
+39696           decidedWaitingExecution.size: 1
+39697           Executing instance: 12
+39697           Executing batch: 1:13
+39697           Cannot continue execution. Next instance not decided: 13
+39697           Executing batch rid:1:13, State:Executed, Acks: [11], stable:true, instance number 12
+39697           Prunning logs. rcvdUB: [0, 13] [0, 13] 
+39697           Property not found: parallel.batch. Using default value: false
+39697           Lower: [1, 13], firstNotProposed: [1, 14], upper: [1, 14]
+39697           <Service> Executed request no.12
+39697           Lower: [1, 14], firstNotProposed: [1, 14], upper: [1, 14]
+39698           Instance finished: 12
+39712           Sleeping: 50. lastAckedVector: [0, 12] at time 1381758357183
+39712           Ack time overdue: -51, msg: AckForwardClientBatch([0, 13])
+39763           Sleeping: 50. lastAckedVector: [0, 13] at time 1381758357284
+39765           Received [1] ForwardClientBatch(rid:1:14, [id=2763516637828003:14], [0, 13]) size: 149
+39765           Initializing: 1:14
+39765           New SN. Replica 1, previous:13, new: 14, All: [0, 13]
+39765           New SN. Replica 0, previous:13, new: 14, All: [0, 14]
+39765           Received request: rid:1:14, State:NotProposed, Acks: [11], stable:true
+39765           Enqueuing batch: rid:1:14, State:NotProposed, Acks: [11], stable:true
+39766           Starting batch.
+39777           Batch timeout
+39777           Batch ready. Number of requests: 1, queued reqs: 0
+39777           pendingProposals.size() = 0, MAX: 30
+39777           Scheduling proposal task
+39777           Enqueued proposal. pendingProposal.size(): 1
+39777           Propose task running
+39778           Proposing. pendingProposals.size(): 1, window used: 0
+39778           Proposing: 13, Reqs:1:14, Size:12, k=1
+39777           Batch dispatched.
+39778           Resending in: 200
+39779           Received [1] Accept(v:2, i:13) size: 17
+39779           Msg rcv: Accept(v:2, i:13)
+39779           Decided 13, Log Size: 14
+39779           Proposing. pendingProposals.size(): 0, window used: 0
+39779           Instance: 13: [rid=1:14]
+39779           Decided: rid:1:14, State:Decided, Acks: [11], stable:true
+39779           decidedWaitingExecution.size: 1
+39779           Executing instance: 13
+39780           Executing batch: 1:14
+39780           Cannot continue execution. Next instance not decided: 14
+39780           Executing batch rid:1:14, State:Executed, Acks: [11], stable:true, instance number 13
+39780           Property not found: parallel.batch. Using default value: false
+39780           Prunning logs. rcvdUB: [0, 14] [0, 14] 
+39780           <Service> Executed request no.13
+39780           Lower: [1, 14], firstNotProposed: [1, 15], upper: [1, 15]
+39780           Instance finished: 13
+39781           Lower: [1, 15], firstNotProposed: [1, 15], upper: [1, 15]
+39814           Sleeping: 50. lastAckedVector: [0, 13] at time 1381758357284
+39814           Ack time overdue: -52, msg: AckForwardClientBatch([0, 14])
+39846           Received [1] ForwardClientBatch(rid:1:15, [id=2763516637828003:15], [0, 14]) size: 149
+39847           Initializing: 1:15
+39847           New SN. Replica 1, previous:14, new: 15, All: [0, 14]
+39847           New SN. Replica 0, previous:14, new: 15, All: [0, 15]
+39847           Received request: rid:1:15, State:NotProposed, Acks: [11], stable:true
+39847           Enqueuing batch: rid:1:15, State:NotProposed, Acks: [11], stable:true
+39847           Starting batch.
+39858           Batch timeout
+39859           Batch ready. Number of requests: 1, queued reqs: 0
+39859           pendingProposals.size() = 0, MAX: 30
+39859           Scheduling proposal task
+39859           Enqueued proposal. pendingProposal.size(): 1
+39859           Propose task running
+39859           Batch dispatched.
+39859           Proposing. pendingProposals.size(): 1, window used: 0
+39859           Proposing: 14, Reqs:1:15, Size:12, k=1
+39860           Resending in: 200
+39860           Received [1] Accept(v:2, i:14) size: 17
+39860           Msg rcv: Accept(v:2, i:14)
+39861           Decided 14, Log Size: 15
+39861           Proposing. pendingProposals.size(): 0, window used: 0
+39861           Instance: 14: [rid=1:15]
+39861           Decided: rid:1:15, State:Decided, Acks: [11], stable:true
+39861           decidedWaitingExecution.size: 1
+39861           Executing instance: 14
+39861           Executing batch: 1:15
+39862           Cannot continue execution. Next instance not decided: 15
+39862           Executing batch rid:1:15, State:Executed, Acks: [11], stable:true, instance number 14
+39862           Prunning logs. rcvdUB: [0, 15] [0, 15] 
+39862           Property not found: parallel.batch. Using default value: false
+39862           Lower: [1, 15], firstNotProposed: [1, 16], upper: [1, 16]
+39862           <Service> Executed request no.14
+39862           Lower: [1, 16], firstNotProposed: [1, 16], upper: [1, 16]
+39863           Snapshot up to: 15
+39865           Sleeping: 50. lastAckedVector: [0, 14] at time 1381758357387
+39865           Ack time overdue: 0, msg: AckForwardClientBatch([0, 15])
+39865           Made snapshot
+39865           Instance finished: 14
+39865           Snapshot made. next instance: 14, log: 15
+39866           Truncated log below: 0
+39867           Snapshot received from state machine for:14(previous: 0) New size estimate: 256.75
+39916           Sleeping: 50. lastAckedVector: [0, 15] at time 1381758357437
+39931           Received [1] ForwardClientBatch(rid:1:16, [id=2763516637828003:16], [0, 15]) size: 149
+39932           Initializing: 1:16
+39932           New SN. Replica 1, previous:15, new: 16, All: [0, 15]
+39932           New SN. Replica 0, previous:15, new: 16, All: [0, 16]
+39932           Received request: rid:1:16, State:NotProposed, Acks: [11], stable:true
+39932           Enqueuing batch: rid:1:16, State:NotProposed, Acks: [11], stable:true
+39932           Starting batch.
+39943           Batch timeout
+39943           Batch ready. Number of requests: 1, queued reqs: 0
+39943           pendingProposals.size() = 0, MAX: 30
+39943           Scheduling proposal task
+39943           Enqueued proposal. pendingProposal.size(): 1
+39943           Propose task running
+39943           Batch dispatched.
+39943           Proposing. pendingProposals.size(): 1, window used: 0
+39944           Proposing: 15, Reqs:1:16, Size:12, k=1
+39944           Resending in: 200
+39945           Received [1] Accept(v:2, i:15) size: 17
+39945           Msg rcv: Accept(v:2, i:15)
+39945           Decided 15, Log Size: 16
+39945           Proposing. pendingProposals.size(): 0, window used: 0
+39945           Instance: 15: [rid=1:16]
+39945           Decided: rid:1:16, State:Decided, Acks: [11], stable:true
+39945           decidedWaitingExecution.size: 1
+39946           Executing instance: 15
+39946           Executing batch: 1:16
+39946           Cannot continue execution. Next instance not decided: 16
+39946           Executing batch rid:1:16, State:Executed, Acks: [11], stable:true, instance number 15
+39946           Prunning logs. rcvdUB: [0, 16] [0, 16] 
+39946           Property not found: parallel.batch. Using default value: false
+39946           Lower: [1, 16], firstNotProposed: [1, 17], upper: [1, 17]
+39946           <Service> Executed request no.15
+39947           Lower: [1, 17], firstNotProposed: [1, 17], upper: [1, 17]
+39947           Instance finished: 15
+39967           Sleeping: 50. lastAckedVector: [0, 15] at time 1381758357437
+39967           Ack time overdue: -52, msg: AckForwardClientBatch([0, 16])
+40016           Received [1] ForwardClientBatch(rid:1:17, [id=2763516637828003:17], [0, 16]) size: 149
+40017           Initializing: 1:17
+40017           New SN. Replica 1, previous:16, new: 17, All: [0, 16]
+40017           New SN. Replica 0, previous:16, new: 17, All: [0, 17]
+40017           Received request: rid:1:17, State:NotProposed, Acks: [11], stable:true
+40017           Enqueuing batch: rid:1:17, State:NotProposed, Acks: [11], stable:true
+40017           Starting batch.
+40018           Sleeping: 50. lastAckedVector: [0, 16] at time 1381758357539
+40018           Ack time overdue: -1, msg: AckForwardClientBatch([0, 17])
+40028           Batch timeout
+40028           Batch ready. Number of requests: 1, queued reqs: 0
+40028           pendingProposals.size() = 0, MAX: 30
+40028           Scheduling proposal task
+40028           Enqueued proposal. pendingProposal.size(): 1
+40029           Propose task running
+40029           Proposing. pendingProposals.size(): 1, window used: 0
+40029           Proposing: 16, Reqs:1:17, Size:12, k=1
+40029           Batch dispatched.
+40029           Resending in: 200
+40030           Received [1] Accept(v:2, i:16) size: 17
+40030           Msg rcv: Accept(v:2, i:16)
+40030           Decided 16, Log Size: 17
+40030           Proposing. pendingProposals.size(): 0, window used: 0
+40030           Instance: 16: [rid=1:17]
+40030           Decided: rid:1:17, State:Decided, Acks: [11], stable:true
+40031           decidedWaitingExecution.size: 1
+40031           Executing instance: 16
+40031           Executing batch: 1:17
+40031           Cannot continue execution. Next instance not decided: 17
+40031           Executing batch rid:1:17, State:Executed, Acks: [11], stable:true, instance number 16
+40031           Prunning logs. rcvdUB: [0, 17] [0, 17] 
+40031           Property not found: parallel.batch. Using default value: false
+40031           Lower: [1, 17], firstNotProposed: [1, 18], upper: [1, 18]
+40031           <Service> Executed request no.16
+40032           Lower: [1, 18], firstNotProposed: [1, 18], upper: [1, 18]
+40032           Instance finished: 16
+40061           Sending next Alive in 468ms
+40068           Sleeping: 50. lastAckedVector: [0, 17] at time 1381758357590
+40100           Received [1] ForwardClientBatch(rid:1:18, [id=2763516637828003:18], [0, 17]) size: 149
+40100           Initializing: 1:18
+40100           New SN. Replica 1, previous:17, new: 18, All: [0, 17]
+40100           New SN. Replica 0, previous:17, new: 18, All: [0, 18]
+40100           Received request: rid:1:18, State:NotProposed, Acks: [11], stable:true
+40100           Enqueuing batch: rid:1:18, State:NotProposed, Acks: [11], stable:true
+40101           Starting batch.
+40111           Batch timeout
+40112           Batch ready. Number of requests: 1, queued reqs: 0
+40112           pendingProposals.size() = 0, MAX: 30
+40112           Scheduling proposal task
+40112           Enqueued proposal. pendingProposal.size(): 1
+40112           Propose task running
+40112           Batch dispatched.
+40112           Proposing. pendingProposals.size(): 1, window used: 0
+40112           Proposing: 17, Reqs:1:18, Size:12, k=1
+40112           Resending in: 200
+40113           Received [1] Accept(v:2, i:17) size: 17
+40113           Msg rcv: Accept(v:2, i:17)
+40113           Decided 17, Log Size: 18
+40114           Proposing. pendingProposals.size(): 0, window used: 0
+40114           Instance: 17: [rid=1:18]
+40114           Decided: rid:1:18, State:Decided, Acks: [11], stable:true
+40114           decidedWaitingExecution.size: 1
+40114           Executing instance: 17
+40114           Executing batch: 1:18
+40115           Cannot continue execution. Next instance not decided: 18
+40115           Executing batch rid:1:18, State:Executed, Acks: [11], stable:true, instance number 17
+40115           Prunning logs. rcvdUB: [0, 18] [0, 18] 
+40115           Property not found: parallel.batch. Using default value: false
+40115           Lower: [1, 18], firstNotProposed: [1, 19], upper: [1, 19]
+40115           <Service> Executed request no.17
+40115           Lower: [1, 19], firstNotProposed: [1, 19], upper: [1, 19]
+40115           Instance finished: 17
+40120           Sleeping: 50. lastAckedVector: [0, 17] at time 1381758357590
+40120           Ack time overdue: -52, msg: AckForwardClientBatch([0, 18])
+40171           Sleeping: 50. lastAckedVector: [0, 18] at time 1381758357692
+40179           Received [1] ForwardClientBatch(rid:1:19, [id=2763516637828003:19], [0, 18]) size: 149
+40179           Initializing: 1:19
+40180           New SN. Replica 1, previous:18, new: 19, All: [0, 18]
+40180           New SN. Replica 0, previous:18, new: 19, All: [0, 19]
+40180           Received request: rid:1:19, State:NotProposed, Acks: [11], stable:true
+40180           Enqueuing batch: rid:1:19, State:NotProposed, Acks: [11], stable:true
+40180           Starting batch.
+40191           Batch timeout
+40192           Batch ready. Number of requests: 1, queued reqs: 0
+40192           pendingProposals.size() = 0, MAX: 30
+40192           Scheduling proposal task
+40192           Enqueued proposal. pendingProposal.size(): 1
+40192           Propose task running
+40192           Batch dispatched.
+40192           Proposing. pendingProposals.size(): 1, window used: 0
+40192           Proposing: 18, Reqs:1:19, Size:12, k=1
+40193           Resending in: 199
+40193           Received [1] Accept(v:2, i:18) size: 17
+40193           Msg rcv: Accept(v:2, i:18)
+40194           Decided 18, Log Size: 19
+40194           Proposing. pendingProposals.size(): 0, window used: 0
+40194           Instance: 18: [rid=1:19]
+40194           Decided: rid:1:19, State:Decided, Acks: [11], stable:true
+40194           decidedWaitingExecution.size: 1
+40194           Executing instance: 18
+40194           Executing batch: 1:19
+40195           Cannot continue execution. Next instance not decided: 19
+40195           Executing batch rid:1:19, State:Executed, Acks: [11], stable:true, instance number 18
+40195           Prunning logs. rcvdUB: [0, 19] [0, 19] 
+40195           Property not found: parallel.batch. Using default value: false
+40195           Lower: [1, 19], firstNotProposed: [1, 20], upper: [1, 20]
+40195           <Service> Executed request no.18
+40195           Lower: [1, 20], firstNotProposed: [1, 20], upper: [1, 20]
+40195           Instance finished: 18
+40222           Sleeping: 50. lastAckedVector: [0, 18] at time 1381758357692
+40222           Ack time overdue: -52, msg: AckForwardClientBatch([0, 19])
+40254           Received [1] ForwardClientBatch(rid:1:20, [id=2763516637828003:20], [0, 19]) size: 149
+40255           Initializing: 1:20
+40255           New SN. Replica 1, previous:19, new: 20, All: [0, 19]
+40255           New SN. Replica 0, previous:19, new: 20, All: [0, 20]
+40255           Received request: rid:1:20, State:NotProposed, Acks: [11], stable:true
+40255           Enqueuing batch: rid:1:20, State:NotProposed, Acks: [11], stable:true
+40255           Starting batch.
+40266           Batch timeout
+40266           Batch ready. Number of requests: 1, queued reqs: 0
+40266           pendingProposals.size() = 0, MAX: 30
+40266           Scheduling proposal task
+40266           Enqueued proposal. pendingProposal.size(): 1
+40266           Propose task running
+40266           Proposing. pendingProposals.size(): 1, window used: 0
+40266           Batch dispatched.
+40266           Proposing: 19, Reqs:1:20, Size:12, k=1
+40267           Resending in: 200
+40267           Received [1] Accept(v:2, i:19) size: 17
+40268           Msg rcv: Accept(v:2, i:19)
+40268           Decided 19, Log Size: 20
+40268           Proposing. pendingProposals.size(): 0, window used: 0
+40268           Instance: 19: [rid=1:20]
+40268           Decided: rid:1:20, State:Decided, Acks: [11], stable:true
+40268           decidedWaitingExecution.size: 1
+40268           Executing instance: 19
+40269           Executing batch: 1:20
+40269           Cannot continue execution. Next instance not decided: 20
+40269           Prunning logs. rcvdUB: [0, 20] [0, 20] 
+40269           Executing batch rid:1:20, State:Executed, Acks: [11], stable:true, instance number 19
+40269           Property not found: parallel.batch. Using default value: false
+40269           Lower: [1, 20], firstNotProposed: [1, 21], upper: [1, 21]
+40269           <Service> Executed request no.19
+40269           Lower: [1, 21], firstNotProposed: [1, 21], upper: [1, 21]
+40269           Instance finished: 19
+40273           Sleeping: 50. lastAckedVector: [0, 19] at time 1381758357794
+40273           Ack time overdue: -1, msg: AckForwardClientBatch([0, 20])
+40324           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40375           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40426           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40478           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40529           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40529           Sending next Alive in 244ms
+40581           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40631           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40682           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40733           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40774           Sending next Alive in 500ms
+40774           Received from 0:ALIVE (v:0, logsize: 20)
+40775           Msg rcv: ALIVE (v:0, logsize: 20)
+40784           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40835           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40886           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40937           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+40988           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41040           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41091           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41142           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41193           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41245           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41276           Sending next Alive in 500ms
+41276           Received from 0:ALIVE (v:0, logsize: 20)
+41276           Msg rcv: ALIVE (v:0, logsize: 20)
+41296           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41348           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41399           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41450           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41501           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41551           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41602           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41653           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41704           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41755           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41777           Sending next Alive in 500ms
+41777           Received from 0:ALIVE (v:0, logsize: 20)
+41777           Msg rcv: ALIVE (v:0, logsize: 20)
+41807           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41858           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41909           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+41959           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42011           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42062           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42113           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42164           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42215           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42266           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42279           Sending next Alive in 500ms
+42279           Received from 0:ALIVE (v:0, logsize: 20)
+42279           Msg rcv: ALIVE (v:0, logsize: 20)
+42317           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42368           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42419           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42470           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42522           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42573           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42623           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42675           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42726           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42777           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42780           Sending next Alive in 500ms
+42780           Received from 0:ALIVE (v:0, logsize: 20)
+42780           Msg rcv: ALIVE (v:0, logsize: 20)
+42829           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42879           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42931           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+42982           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43033           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43084           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43136           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43187           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43238           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43281           Sending next Alive in 500ms
+43282           Received from 0:ALIVE (v:0, logsize: 20)
+43282           Msg rcv: ALIVE (v:0, logsize: 20)
+43290           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43340           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43391           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43442           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43493           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43544           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43596           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43646           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43698           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43749           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43783           Sending next Alive in 500ms
+43783           Received from 0:ALIVE (v:0, logsize: 20)
+43783           Msg rcv: ALIVE (v:0, logsize: 20)
+43800           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43852           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43903           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+43954           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44005           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44056           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44108           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44159           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44209           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44261           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44284           Sending next Alive in 500ms
+44284           Received from 0:ALIVE (v:0, logsize: 20)
+44284           Msg rcv: ALIVE (v:0, logsize: 20)
+44312           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44363           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44414           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44465           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44517           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44568           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44619           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44670           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44722           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44772           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44785           Sending next Alive in 500ms
+44785           Received from 0:ALIVE (v:0, logsize: 20)
+44786           Msg rcv: ALIVE (v:0, logsize: 20)
+44824           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44875           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44926           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+44977           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45027           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45077           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45129           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45180           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45232           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45283           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45286           Sending next Alive in 500ms
+45286           Received from 0:ALIVE (v:0, logsize: 20)
+45287           Msg rcv: ALIVE (v:0, logsize: 20)
+45334           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45385           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45436           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45487           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45538           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45589           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45641           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45692           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45743           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45787           Sending next Alive in 500ms
+45787           Received from 0:ALIVE (v:0, logsize: 20)
+45787           Msg rcv: ALIVE (v:0, logsize: 20)
+45795           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45845           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45896           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45947           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+45999           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46050           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46101           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46152           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46204           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46255           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46288           Sending next Alive in 500ms
+46288           Received from 0:ALIVE (v:0, logsize: 20)
+46289           Msg rcv: ALIVE (v:0, logsize: 20)
+46306           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46357           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46407           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46458           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46509           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46560           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46612           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46662           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46713           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46764           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46790           Sending next Alive in 500ms
+46790           Received from 0:ALIVE (v:0, logsize: 20)
+46790           Msg rcv: ALIVE (v:0, logsize: 20)
+46815           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46866           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46917           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+46969           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47019           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47071           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47122           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47173           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47224           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47275           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47290           Sending next Alive in 500ms
+47290           Received from 0:ALIVE (v:0, logsize: 20)
+47291           Msg rcv: ALIVE (v:0, logsize: 20)
+47326           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47377           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47428           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47479           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47530           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47581           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47633           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47684           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47735           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47786           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47791           Sending next Alive in 500ms
+47791           Received from 0:ALIVE (v:0, logsize: 20)
+47792           Msg rcv: ALIVE (v:0, logsize: 20)
+47838           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47889           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47940           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+47991           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48042           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48094           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48145           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48196           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48248           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48292           Sending next Alive in 500ms
+48292           Received from 0:ALIVE (v:0, logsize: 20)
+48293           Msg rcv: ALIVE (v:0, logsize: 20)
+48299           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48350           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48401           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48452           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48503           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48554           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48605           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48657           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48708           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48759           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48794           Sending next Alive in 500ms
+48794           Received from 0:ALIVE (v:0, logsize: 20)
+48794           Msg rcv: ALIVE (v:0, logsize: 20)
+48810           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48862           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48913           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+48964           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49015           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49066           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49117           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49168           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49219           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49271           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49295           Sending next Alive in 500ms
+49295           Received from 0:ALIVE (v:0, logsize: 20)
+49295           Msg rcv: ALIVE (v:0, logsize: 20)
+49322           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49373           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49424           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49475           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49527           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49577           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49629           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49680           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49731           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49782           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49796           Sending next Alive in 500ms
+49796           Received from 0:ALIVE (v:0, logsize: 20)
+49796           Msg rcv: ALIVE (v:0, logsize: 20)
+49833           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49884           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49935           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+49987           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50037           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50088           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50139           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50190           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50242           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50293           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50297           Sending next Alive in 500ms
+50297           Received from 0:ALIVE (v:0, logsize: 20)
+50297           Msg rcv: ALIVE (v:0, logsize: 20)
+50344           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50395           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50446           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50498           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50549           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50600           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50651           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50702           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50753           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50798           Sending next Alive in 500ms
+50798           Received from 0:ALIVE (v:0, logsize: 20)
+50799           Msg rcv: ALIVE (v:0, logsize: 20)
+50805           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50855           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50906           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+50957           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51009           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51060           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51112           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51162           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51214           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51265           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51300           Sending next Alive in 500ms
+51300           Received from 0:ALIVE (v:0, logsize: 20)
+51300           Msg rcv: ALIVE (v:0, logsize: 20)
+51316           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51367           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51419           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51469           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51520           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51571           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51622           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51674           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51724           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51775           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51801           Sending next Alive in 500ms
+51801           Received from 0:ALIVE (v:0, logsize: 20)
+51801           Msg rcv: ALIVE (v:0, logsize: 20)
+51826           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51878           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51928           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+51979           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52031           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52082           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52133           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52184           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52235           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52285           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52302           Sending next Alive in 500ms
+52302           Received from 0:ALIVE (v:0, logsize: 20)
+52303           Msg rcv: ALIVE (v:0, logsize: 20)
+52337           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52388           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52439           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52489           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52540           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52591           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52642           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52694           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52745           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52796           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52804           Sending next Alive in 500ms
+52804           Received from 0:ALIVE (v:0, logsize: 20)
+52804           Msg rcv: ALIVE (v:0, logsize: 20)
+52847           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52898           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+52949           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53000           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53051           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53101           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53152           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53203           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53254           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53305           Sending next Alive in 500ms
+53305           Received from 0:ALIVE (v:0, logsize: 20)
+53305           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53305           Msg rcv: ALIVE (v:0, logsize: 20)
+53357           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53408           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53459           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53510           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53561           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53611           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53662           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53712           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53764           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53806           Sending next Alive in 500ms
+53807           Received from 0:ALIVE (v:0, logsize: 20)
+53807           Msg rcv: ALIVE (v:0, logsize: 20)
+53815           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53866           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53917           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+53968           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54019           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54071           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54122           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54173           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54224           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54274           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54308           Sending next Alive in 500ms
+54308           Received from 0:ALIVE (v:0, logsize: 20)
+54308           Msg rcv: ALIVE (v:0, logsize: 20)
+54325           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54377           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54428           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54478           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54529           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54581           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54631           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54682           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54732           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54784           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54809           Sending next Alive in 500ms
+54809           Received from 0:ALIVE (v:0, logsize: 20)
+54809           Msg rcv: ALIVE (v:0, logsize: 20)
+54835           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54886           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54938           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+54989           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55040           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55090           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55141           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55192           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55243           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55295           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55310           Sending next Alive in 500ms
+55310           Received from 0:ALIVE (v:0, logsize: 20)
+55311           Msg rcv: ALIVE (v:0, logsize: 20)
+55345           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55397           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55448           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55499           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55550           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55601           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55652           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55703           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55755           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55806           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55811           Sending next Alive in 500ms
+55811           Received from 0:ALIVE (v:0, logsize: 20)
+55811           Msg rcv: ALIVE (v:0, logsize: 20)
+55857           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55908           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+55959           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+56010           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+56062           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+56113           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+56164           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+56215           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+56266           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845
+56312           Sending next Alive in 500ms
+56312           Received from 0:ALIVE (v:0, logsize: 20)
+56313           Msg rcv: ALIVE (v:0, logsize: 20)
+56317           Sleeping: 50. lastAckedVector: [0, 20] at time 1381758357845

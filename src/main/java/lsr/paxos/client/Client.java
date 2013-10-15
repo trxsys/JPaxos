@@ -1,5 +1,10 @@
 package lsr.paxos.client;
 
+import lsr.common.*;
+import lsr.common.ClientCommand.CommandType;
+import lsr.paxos.ReplicationException;
+import lsr.paxos.statistics.ClientStats;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -10,19 +15,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import lsr.common.ClientCommand;
-import lsr.common.ClientCommand.CommandType;
-import lsr.common.ClientReply;
-import lsr.common.ClientRequest;
-import lsr.common.Configuration;
-import lsr.common.MovingAverage;
-import lsr.common.PID;
-import lsr.common.PrimitivesByteArray;
-import lsr.common.Reply;
-import lsr.common.RequestId;
-import lsr.paxos.ReplicationException;
-import lsr.paxos.statistics.ClientStats;
 
 /**
  * Class represents TCP connection to replica. It should be used by clients, to
@@ -179,6 +171,94 @@ public class Client {
                         assert reply.getRequestId().equals(request.getRequestId()) : 
                             "Bad reply. Expected: " + request.getRequestId() +
                             ", got: " + reply.getRequestId();
+
+                        long time = System.currentTimeMillis() - start;
+                        stats.replyOk(reply.getRequestId());
+                        average.add(time);
+                        return reply.getValue();
+
+                    case REDIRECT:
+                        int currentPrimary = PrimitivesByteArray.toInt(clientReply.getValue());
+                        if (currentPrimary < 0 || currentPrimary >= n) {
+                            // Invalid ID. Ignore redirect and try next replica.
+                            logger.warning("Reply: Invalid redirect received: " + currentPrimary +
+                                    ". Proceeding with next replica.");
+                            currentPrimary = (primary + 1) % n;
+                        } else {
+                            stats.replyRedirect();
+                            logger.info("Reply REDIRECT to " + currentPrimary);
+                        }
+                        waitForReconnect(REDIRECT_TIMEOUT);
+                        reconnect(currentPrimary);
+                        break;
+
+                    case NACK:
+                        throw new ReplicationException("Nack received: " +
+                                new String(clientReply.getValue()));
+
+                    case BUSY:
+                        stats.replyBusy();
+                        throw new ReplicationException(new String(clientReply.getValue()));
+
+                    default:
+                        throw new RuntimeException("Unknown reply type");
+                }
+
+            } catch (SocketTimeoutException e) {
+                logger.warning("Error waiting for answer: " + e.getMessage() + ", Request: " + request.getRequestId() + ", node: " + primary);
+                stats.replyTimeout();
+                cleanClose();
+                increaseTimeout();
+                connect();
+            } catch (IOException e) {
+                logger.warning("Error reading socket: " + e.toString() + ". Request: " + request.getRequestId() + ", node: " + primary);
+                waitForReconnect(CONNECTION_FAILURE_TIMEOUT);
+                connect();
+            }
+        }
+    }
+
+    /**
+     * Sends request to a single replica, to directly execute with the specified
+     * object as argument, bypassing paxos service.
+     * This object should be known to replica, which generate reply.
+     * This method will block until response from replica is received.
+     *
+     * @param bytes - argument for service
+     * @return reply from service
+     * @throws ReplicationException if error occurs while sending request
+     */
+    public synchronized byte[] executeP2P(byte[] bytes) throws ReplicationException {
+        ClientRequest request = new ClientRequest(nextRequestId(), bytes);
+        ClientCommand command = new ClientCommand(CommandType.P2PREQUEST, request);
+
+        long start = System.currentTimeMillis();
+
+        while (true) {
+            try {
+                if (logger.isLoggable(Level.FINE)) {
+                    logger.fine("Sending " + request.getRequestId());
+                }
+
+                ByteBuffer bb = ByteBuffer.allocate(command.byteSize());
+                command.writeTo(bb);
+                bb.flip();
+                output.write(bb.array());
+                output.flush();
+
+                // Blocks only for Socket.SO_TIMEOUT
+                stats.requestSent(request.getRequestId());
+
+                ClientReply clientReply = new ClientReply(input);
+
+
+                switch (clientReply.getResult()) {
+                    case OK:
+                        Reply reply = new Reply(clientReply.getValue());
+                        logger.fine("Reply OK");
+                        assert reply.getRequestId().equals(request.getRequestId()) :
+                                "Bad reply. Expected: " + request.getRequestId() +
+                                        ", got: " + reply.getRequestId();
 
                         long time = System.currentTimeMillis() - start;
                         stats.replyOk(reply.getRequestId());

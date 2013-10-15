@@ -16,7 +16,7 @@ public class ClientCommand implements Serializable {
      * The type of command.
      */
     public enum CommandType {
-        REQUEST, ALIVE
+        REQUEST, ALIVE, P2PREQUEST
     };
 
     /**

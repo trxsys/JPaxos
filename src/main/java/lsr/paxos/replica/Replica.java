@@ -344,6 +344,44 @@ public class Replica {
         requestManager.onRequestExecuted(cRequest, reply);
     }
 
+    /**
+     * Called directly from ClientRequestManager bypassing Paxos service
+     * @param cRequest - client request
+     */
+    public void executeSingleP2PClientRequest(ClientRequest cRequest) {
+        RequestId rID = cRequest.getRequestId();
+        Reply lastReply = executedRequests.get(rID.getClientId());
+        if (lastReply != null) {
+            int lastSequenceNumberFromClient = lastReply.getRequestId().getSeqNumber();
+
+            // Do not execute the same request several times.
+            if (rID.getSeqNumber() <= lastSequenceNumberFromClient) {
+                logger.warning("P2P Request ordered multiple times. " +
+                        cRequest + ", lastSequenceNumberFromClient: " + lastSequenceNumberFromClient);
+
+                // Send the cached reply back to the client
+                if (rID.getSeqNumber() == lastSequenceNumberFromClient) {
+                    requestManager.onRequestExecuted(cRequest, lastReply);
+                }
+                return;
+            }
+        }
+
+        // Here the replica thread is given to Service.
+        byte[] result = serviceProxy.execute(cRequest, -1);
+
+        Reply reply = new Reply(cRequest.getRequestId(), result);
+
+        // add request to executed history
+        cache.add(reply);
+
+        executedRequests.put(rID.getClientId(), reply);
+
+        // Can this ever be null?
+        assert requestManager != null : "Request manager should not be null";
+        requestManager.onRequestExecuted(cRequest, reply);
+    }
+
     // Statistics. Used to count how many requests are in a given instance.
     private int requestsInInstance = 0;
 

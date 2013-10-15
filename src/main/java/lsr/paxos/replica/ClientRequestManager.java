@@ -1,22 +1,17 @@
 package lsr.paxos.replica;
 
+import lsr.common.*;
+import lsr.common.ClientReply.Result;
+import lsr.common.nio.SelectorThread;
+import lsr.paxos.Paxos;
+import lsr.paxos.statistics.QueueMonitor;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import lsr.common.ClientCommand;
-import lsr.common.ClientReply;
-import lsr.common.ClientReply.Result;
-import lsr.common.ClientRequest;
-import lsr.common.Reply;
-import lsr.common.RequestId;
-import lsr.common.SingleThreadDispatcher;
-import lsr.common.nio.SelectorThread;
-import lsr.paxos.Paxos;
-import lsr.paxos.statistics.QueueMonitor;
 
 /**
  * Handles all commands from the clients. A single instance is used to manage all clients.
@@ -83,7 +78,6 @@ final public class ClientRequestManager {
      * @param client - client which request this command
      * @throws InterruptedException 
      * @see ClientCommand
-     * @see ClientProxy
      */
     public void onClientRequest(ClientCommand command, NioClientProxy client) throws InterruptedException {
         // Called by a Selector thread.
@@ -135,7 +129,51 @@ final public class ClientRequestManager {
                         
                     }
                     break;
+                case P2PREQUEST:
+                    request = command.getRequest();
+                    reqId = request.getRequestId();
 
+                    // It is a new request if - there is no stored reply from the given
+                    // client - or the sequence number of the stored request is older.
+                    lastReply = lastReplies.get(reqId.getClientId());
+                    newRequest = lastReply == null ||
+                            reqId.getSeqNumber() > lastReply.getRequestId().getSeqNumber();
+
+                    if (newRequest) {
+                        if (logger.isLoggable(Level.FINE)) {
+                            logger.fine("Received: " + request);
+                        }
+
+                        // Store the ClientProxy associated with the request.
+                        // Used to send the answer back to the client
+                        // Must be stored before proposed, otherwise the reply might be ready
+                        // before this thread finishes storing the request.
+
+                        // Flow control. Wait for a permit. May block the selector thread.
+                        pendingRequestsSem.acquire();
+                        pendingClientProxies.put(reqId, client);
+
+                        replica.executeSingleP2PClientRequest(request);
+
+                    } else {
+
+                        // Since the replica only keeps the reply to the last request executed from each client,
+                        // it checks if the cached reply is for the given request. If not, there's something
+                        // wrong, because the client already received the reply (otherwise it wouldn't send an
+                        // a more recent request). I've seen this message on view change. Probably some requests
+                        // are not properly discarded.
+                        if (lastReply.getRequestId().equals(reqId)) {
+                            client.send(new ClientReply(Result.OK, lastReply.toByteArray()));
+                        } else {
+                            String errorMsg = "Request too old: " + request.getRequestId() +
+                                    ", Last reply: " + lastReply.getRequestId();
+                            logger.warning(errorMsg);
+                            client.send(new ClientReply(Result.NACK, errorMsg.getBytes()));
+                        }
+
+                    }
+
+                    break;
                 default:
                     logger.warning("Received invalid command " + command + " from " + client);
                     client.send(new ClientReply(Result.NACK, "Unknown command.".getBytes()));

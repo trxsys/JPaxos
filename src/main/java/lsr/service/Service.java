@@ -48,10 +48,9 @@ public interface Service {
      *
      * @param value - value of instance to execute on this service
      * @param seqNo - ordinal number of this requests
-     * @param batchOrderId - request order number within an paxos instance batch
      * @return generated reply which will be sent to client
      */
-    byte[] execute(byte[] value, int seqNo, int batchOrderId);
+    byte[] execute(byte[] value, int seqNo);
 
 
 

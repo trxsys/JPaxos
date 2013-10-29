@@ -1,13 +1,13 @@
 package lsr.service;
 
-import lsr.paxos.replica.Replica;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * This class provides skeletal implementation of {@link Service} interface to
+ * This class provides skeletal implementation of {@link lsr.service.Service} interface to
  * simplify creating services. To create new service using this class programmer
  * needs to implement following methods:
  * <ul>
- * <li><code>execute</code></li>
+ * <li><code>executeRequest</code></li>
  * <li><code>makeSnapshot</code></li>
  * <li><code>updateToSnapshot</code></li>
  * </ul>
@@ -18,19 +18,22 @@ import lsr.paxos.replica.Replica;
  * <p>
  * All methods are called from the same thread, so it is not necessary to
  * synchronize them.
- * 
+ *
  */
-public abstract class SimplifiedService extends AbstractService {
-    private int lastExecutedSeq;
+public abstract class PagerService extends AbstractService {
+    // TODO: assess the impact of our modification on snapshotting functionality.
+    private AtomicInteger lastExecutedSeq = new AtomicInteger(0);
 
     /**
+     *
      * Executes one command from client on this state machine. This method will
-     * be called by {@link Replica}.
-     * 
+     * be called by {@link lsr.paxos.replica.Replica}.
+     *
      * @param value - value of instance to execute on this service
+     * @param seqNo - sequence number of this request
      * @return generated reply which will be sent to client
      */
-    protected abstract byte[] execute(byte[] value);
+    protected abstract byte[] executeRequest(byte[] value, int seqNo);
 
     /**
      * Makes snapshot for current state of <code>Service</code>.
@@ -52,8 +55,11 @@ public abstract class SimplifiedService extends AbstractService {
     protected abstract void updateToSnapshot(byte[] snapshot);
 
     public final byte[] execute(byte[] value, int seqNo) {
-        lastExecutedSeq = seqNo;
-        return execute(value);
+        int seq;
+        do {
+            seq = lastExecutedSeq.get();
+        } while (seq < seqNo && !lastExecutedSeq.compareAndSet(seq, seqNo));
+        return executeRequest(value, seqNo);
     }
 
     public final void askForSnapshot(int lastNextSeq) {
@@ -62,11 +68,11 @@ public abstract class SimplifiedService extends AbstractService {
 
     public final void forceSnapshot(int lastNestSeq) {
         byte[] snapshot = makeSnapshot();
-        fireSnapshotMade(lastExecutedSeq + 1, snapshot, null);
+        fireSnapshotMade(lastExecutedSeq.get() + 1, snapshot, null);
     }
 
     public final void updateToSnapshot(int nextSeq, byte[] snapshot) {
-        lastExecutedSeq = nextSeq - 1;
+        lastExecutedSeq.set(nextSeq - 1);
         updateToSnapshot(snapshot);
     }
 }

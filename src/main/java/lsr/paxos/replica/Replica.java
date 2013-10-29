@@ -113,7 +113,7 @@ public class Replica {
 
 
     /**
-     * Parallel batch fields
+     * Executor service for parallel batch execution
      */
     private ExecutorService execService;
 
@@ -240,11 +240,11 @@ public class Replica {
         });
     }
     
-    public void executeClientBatch(final int instance, final ClientBatchInfo bInfo) {
+    public void executeClientBatch(final int instance, final ClientBatchInfo bInfo, final int nReqExecutedSoFar) {
         dispatcher.execute(new Runnable() {
             @Override
             public void run() {
-                innerExecuteClientBatch(instance, bInfo);                
+                innerExecuteClientBatch(instance, bInfo, nReqExecutedSoFar);
             }
         });
     }
@@ -256,35 +256,34 @@ public class Replica {
      * @param instance
      * @param bInfo
      */
-    private void innerExecuteClientBatch(final int instance, final ClientBatchInfo bInfo) {
+    private void innerExecuteClientBatch(final int instance, final ClientBatchInfo bInfo, final int nReqExecutedSoFar) {
         assert dispatcher.amIInDispatcher() : "Wrong thread: " + Thread.currentThread().getName();
 
         if (logger.isLoggable(Level.FINE)) {
             logger.fine("Executing batch " + bInfo + ", instance number " + instance) ;
         }        
 
-        int batchOrderId = 0;
+        final ClientRequest[] batch = bInfo.batch;
+        final int batchLen = batch.length;
+        final boolean isParallel = config.getBooleanProperty("parallel.batch", false);
+        final Future<Void>[] batchFutures = new Future[batchLen];
 
-        Future<Void>[] batchFutures = new Future[bInfo.batch.length];
-
-        boolean isParallel = config.getBooleanProperty("parallel.batch", false);
-
-        for (final ClientRequest cRequest : bInfo.batch) {
-            final int batchOrderIdFinal = batchOrderId;
+        for (int i = 0; i < batchLen; i++) {
+            final ClientRequest cRequest = batch[i];
+            final int reqBatchPos = i;
             if (isParallel) {
-                logger.info("[ParallelBatch] Executing client request in parallel batchOrderId="+batchOrderId);
-                batchFutures[batchOrderId] = execService.submit(new Callable<Void>() {
+                logger.info("[ParallelBatch] Executing client request in parallel batchPos="+reqBatchPos);
+                batchFutures[reqBatchPos] = execService.submit(new Callable<Void>() {
                     @Override
                     public Void call() throws Exception {
-                        innerExecuteClientRequest(instance, bInfo, cRequest, batchOrderIdFinal);
+                        innerExecuteClientRequest(instance, bInfo, cRequest, reqBatchPos, nReqExecutedSoFar);
                         return null;
                     }
                 });
             }
             else {
-                innerExecuteClientRequest(instance, bInfo, cRequest, -1);
+                innerExecuteClientRequest(instance, bInfo, cRequest, /* unused */ -1, /* unused */ -1);
             }
-            batchOrderId++;
         }
 
         if (isParallel) {
@@ -298,11 +297,9 @@ public class Replica {
                 }
             }
         }
-
-
     }
 
-    private void innerExecuteClientRequest(int instance, ClientBatchInfo bInfo, ClientRequest cRequest, int batchOrderId) {
+    private void innerExecuteClientRequest(int instance, ClientBatchInfo bInfo, ClientRequest cRequest, int batchPos, int nReqExecutedSoFar) {
         RequestId rID = cRequest.getRequestId();
         Reply lastReply = executedRequests.get(rID.getClientId());
         if (lastReply != null) {
@@ -323,9 +320,7 @@ public class Replica {
 
 
         // Here the replica thread is given to Service.
-        byte[] result = serviceProxy.execute(cRequest, batchOrderId);
-        // Statistics. Count how many requests are in this instance
-        requestsInInstance++;
+        byte[] result = serviceProxy.execute(cRequest, batchPos, nReqExecutedSoFar);
 
         Reply reply = new Reply(cRequest.getRequestId(), result);
 
@@ -368,7 +363,7 @@ public class Replica {
         }
 
         // Here the replica thread is given to Service.
-        byte[] result = serviceProxy.execute(cRequest, -1);
+        byte[] result = serviceProxy.execute(cRequest, /* unused */ -1, /* unused */ -1);
 
         Reply reply = new Reply(cRequest.getRequestId(), result);
 
@@ -382,37 +377,33 @@ public class Replica {
         requestManager.onRequestExecuted(cRequest, reply);
     }
 
-    // Statistics. Used to count how many requests are in a given instance.
-    private int requestsInInstance = 0;
-
     /** Called by RequestManager when it finishes executing a batch */
-    public void instanceExecuted(final int instance) {        
+    public void instanceExecuted(final int instance, final int nRequests) {
         dispatcher.execute(new Runnable() {
             @Override
             public void run() {
-                innerInstanceExecuted(instance);
+                innerInstanceExecuted(instance, nRequests);
             }
         });
     }
 
-    void innerInstanceExecuted(final int instance) {
+    void innerInstanceExecuted(final int instance, final int nRequests) {
         if (logger.isLoggable(Level.INFO)) {
             logger.info("Instance finished: " + instance);
         }
-        serviceProxy.instanceExecuted(instance);
+        serviceProxy.instanceExecuted(instance, nRequests);
         cache = new ArrayList<Reply>(2048);
         executedDifference.put(instance+1, cache);
         
         executeUB=instance+1;
 
         // The ReplicaStats must be updated only from the Protocol thread
-        final int fReqCount = requestsInInstance;
+        final int fReqCount = nRequests;
         paxos.getDispatcher().submit(new Runnable() {
             @Override
             public void run() {
                 ReplicaStats.getInstance().setRequestsInInstance(instance, fReqCount);
             }}  );
-        requestsInInstance=0;
     }
     
     /**

@@ -154,7 +154,8 @@ public class Replica {
         executedDifference.put(executeUB, cache);
 
         if (config.getBooleanProperty("parallel.batch", false)) {
-            execService = Executors.newFixedThreadPool(5);
+            execService = Executors.newCachedThreadPool();
+
         }
     }
 

@@ -14,7 +14,7 @@ public class EchoService extends AbstractService {
         random = new Random(System.currentTimeMillis() + this.hashCode());
     }
 
-    public byte[] execute(byte[] value, int seqNo, int batchOrderId) {
+    public byte[] execute(byte[] value, int seqNo) {
         Logger.getLogger(this.getClass().getCanonicalName()).info(
                 "<Service> Executed request no." + seqNo);
         if (random.nextInt(10) == 0) {

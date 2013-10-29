@@ -13,7 +13,7 @@ public class SimpleService extends AbstractService {
      * 
      * @see lsr.service.Service#execute(lsr.common.Request)
      */
-    public byte[] execute(byte[] value, int seqNo, int batchOrderId) {
+    public byte[] execute(byte[] value, int seqNo) {
         ByteArrayInputStream byteArrayInput = new ByteArrayInputStream(value);
         DataInputStream dataInput = new DataInputStream(byteArrayInput);
 

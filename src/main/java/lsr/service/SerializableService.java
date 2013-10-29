@@ -36,16 +36,6 @@ public abstract class SerializableService extends SimplifiedService {
     protected abstract Object execute(Object value);
 
     /**
-     * Executes one command from client on this state machine. This method will
-     * be called by {@link Replica}.
-     *
-     * @param value - value of instance to execute on this service
-     * @param batchOrderId - order number within the paxos instance batch
-     * @return generated reply which will be sent to client
-     */
-    protected abstract Object execute(Object value, int batchOrderId);
-
-    /**
      * Updates the current state of <code>Service</code> to state from snapshot.
      * This method will be called after recovery to restore previous state, or
      * if we received new one from other replica (using catch-up).
@@ -70,16 +60,6 @@ public abstract class SerializableService extends SimplifiedService {
     protected final byte[] execute(byte[] value) {
         try {
             return byteArrayFromObject(execute(byteArrayToObject(value)));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    protected final byte[] execute(byte[] value, int batchOrderId) {
-        try {
-            return byteArrayFromObject(execute(byteArrayToObject(value), batchOrderId));
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

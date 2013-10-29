@@ -52,7 +52,7 @@ public class SerializablePaxosConsensus extends AbstractService implements Commi
         thread.start();
     }
 
-    public final byte[] execute(final byte[] value, final int seqNo, final int batchOrderId) {
+    public final byte[] execute(final byte[] value, final int seqNo) {
         operationsToBeDone.add(new Runnable() {
             public void run() {
                 Object val = byteArrayToObject(value);

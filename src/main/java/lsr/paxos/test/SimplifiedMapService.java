@@ -38,34 +38,6 @@ public class SimplifiedMapService extends SimplifiedService {
         return byteArrayOutput.toByteArray();
     }
 
-    protected byte[] execute(byte[] value, int batchOrderId) {
-        MapServiceCommand command;
-        try {
-            command = new MapServiceCommand(value);
-        } catch (IOException e) {
-            logger.log(Level.WARNING, "Incorrect request", e);
-            return null;
-        }
-
-        Long x = map.get(command.getKey());
-        if (x == null) {
-            x = Long.valueOf(0);
-        }
-
-        map.put(command.getKey(), command.getValue());
-
-        ByteArrayOutputStream byteArrayOutput = new ByteArrayOutputStream();
-        DataOutputStream dataOutput = new DataOutputStream(byteArrayOutput);
-        try {
-            dataOutput.writeLong(x);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-        return byteArrayOutput.toByteArray();
-    }
-
     protected byte[] makeSnapshot() {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         try {

@@ -50,7 +50,7 @@ public class DigestService extends AbstractService {
         decisionsFile = new DataOutputStream(new FileOutputStream(logFile));
     }
 
-    public byte[] execute(byte[] value, int seqNo, int batchOrderId) {
+    public byte[] execute(byte[] value, int seqNo) {
         lastExecuteSeqNo = seqNo;
 
         sha512.update(previousDigest);

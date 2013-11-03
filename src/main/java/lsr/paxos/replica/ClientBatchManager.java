@@ -44,7 +44,6 @@ final public class ClientBatchManager implements MessageHandler, DecideCallback 
     private final Map<Integer, Deque<ClientBatch>> decidedWaitingExecution =
             new HashMap<Integer, Deque<ClientBatch>>();
     private int nextInstance;
-    private int nextInstanceNumReqExecuted = 0;
 
     private final Network network;
     private final Paxos paxos;
@@ -248,7 +247,6 @@ final public class ClientBatchManager implements MessageHandler, DecideCallback 
                 if (bId.isNop()) {
                     assert batch.size() == 1;
                     replica.executeNopInstance(nextInstance);
-                    nextInstanceNumReqExecuted++;
                 } else {
                     // !bid.isNop()
                     ClientBatchInfo bInfo = batchStore.getRequestInfo(bId.getBatchId());
@@ -272,17 +270,15 @@ final public class ClientBatchManager implements MessageHandler, DecideCallback 
                     }
                     // execute the request, ie., pass the request to the Replica for execution.
                     bInfo.state = BatchState.Executed;
-                    replica.executeClientBatch(nextInstance, bInfo, nextInstanceNumReqExecuted);
-                    nextInstanceNumReqExecuted += bInfo.batch.length;
+                    replica.executeClientBatch(nextInstance, bInfo);
                 }
                 batch.removeFirst();
             }
             // batch.isEmpty()
             // Done with all the client batches in this instance  
-            replica.instanceExecuted(nextInstance, nextInstanceNumReqExecuted);
+            replica.instanceExecuted(nextInstance);
             decidedWaitingExecution.remove(nextInstance);
             nextInstance++;
-            nextInstanceNumReqExecuted = 0;
         }
     }
 

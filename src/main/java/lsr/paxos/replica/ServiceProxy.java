@@ -8,6 +8,7 @@ import lsr.paxos.Snapshot;
 import lsr.service.Service;
 
 import java.util.*;
+import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -109,8 +110,12 @@ public class ServiceProxy implements SnapshotListener {
     private LinkedList<Pair<Integer, Integer>> startingSeqNo =
             new LinkedList<Pair<Integer, Integer>>();
 
-    /** The base sequence number of the next batch's requests passed to service. */
-    private int baseSeqNo = 0;
+    /** The sequence number of next request passed to service. */
+    private volatile int nextSeqNo = 1;
+
+    /** Synchronisation for correct seqNo assignment. */
+    private static final int MAX_REQUESTS_PER_BATCH = 100;
+    private final Semaphore[] batchSem;
 
     /** The sequence number of first request executed after last snapshot. */
     private int lastSnapshotNextSeqNo = -1;
@@ -148,7 +153,10 @@ public class ServiceProxy implements SnapshotListener {
         this.replicaDispatcher = replicaDispatcher;
         service.addSnapshotListener(this);
         this.responsesCache = responsesCache;
-        startingSeqNo.add(new Pair<Integer, Integer>(0, 0));
+        startingSeqNo.add(new Pair<Integer, Integer>(0, /*nextSeqNo*/1));
+        batchSem = new Semaphore[MAX_REQUESTS_PER_BATCH];
+        batchSem[0] = new Semaphore(1);
+        for (int i = 1; i < MAX_REQUESTS_PER_BATCH; i++) batchSem[i] = new Semaphore(0);
     }
 
     /**
@@ -157,37 +165,63 @@ public class ServiceProxy implements SnapshotListener {
      *
      * @param request - the request to execute on service
      * @param batchPos - request's relative position in the batch
-     * @param nRequestsBeforeBatch - aggregated number of requests of previous batches in the same instance
      * @return the reply from service
      */
-    public byte[] execute(ClientRequest request, int batchPos, int nRequestsBeforeBatch) {
-        final int seqNo = baseSeqNo + nRequestsBeforeBatch + batchPos;
+    public byte[] execute(ClientRequest request, int batchPos) {
+        try {
+            batchSem[batchPos].acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        nextSeqNo++;
+        batchSem[batchPos + 1].release();
         if (skip > 0) {
             skip--;
             assert !skippedCache.isEmpty();
             return skippedCache.poll().getValue();
         } else {
             currentRequest = request;
-            return service.execute(request.getValue(), seqNo);
+            return service.execute(request.getValue(), nextSeqNo - 1);
         }
+    }
+
+    public void alreadyExecuted(int batchPos) {
+        try {
+            batchSem[batchPos].acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        batchSem[batchPos + 1].release();
     }
 
     /** Update the internal state to reflect the execution of a nop request */
     public void executeNop() {
         // TODO: Update snapshotting and recovery to support no-op requests
-        // nextSeqNo++; TODO: does our sequence number implementation affect this?
+        nextSeqNo++;
     }
 
+    /**
+     * Notifies this service proxy that all requests from the batch have been executed.
+     *
+     * @param nRequests - number of requests in the executed batch
+     */
+    public final void batchExecuted(final int nRequests) {
+        batchSem[0].release();
+        assert batchSem[nRequests].availablePermits() == 1;
+        try {
+            batchSem[nRequests].acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
     /**
      * Notifies this service proxy that all request from specified consensus
      * instance has been executed.
      * 
      * @param instanceId - the id of executed consensus instance
-     * @param nRequests - the number of requests executed in instanceId
      */
-    public void instanceExecuted(int instanceId, int nRequests) {
-        baseSeqNo += nRequests;
-        startingSeqNo.add(new Pair<Integer, Integer>(instanceId + 1, baseSeqNo));
+    public void instanceExecuted(int instanceId) {
+        startingSeqNo.add(new Pair<Integer, Integer>(instanceId + 1, nextSeqNo));
     }
 
     /**
@@ -216,13 +250,13 @@ public class ServiceProxy implements SnapshotListener {
      */
     public void updateToSnapshot(Snapshot snapshot) {
         lastSnapshotNextSeqNo = snapshot.getNextRequestSeqNo();
-        baseSeqNo = snapshot.getStartingRequestSeqNo();
-        skip = snapshot.getNextRequestSeqNo() - baseSeqNo;
+        nextSeqNo = snapshot.getStartingRequestSeqNo();
+        skip = snapshot.getNextRequestSeqNo() - nextSeqNo;
 
         skippedCache = new LinkedList<Reply>(snapshot.getPartialResponseCache());
 
-        if (!startingSeqNo.isEmpty() && startingSeqNo.getLast().getValue() > baseSeqNo) {
-            truncateStartingSeqNo(baseSeqNo);
+        if (!startingSeqNo.isEmpty() && startingSeqNo.getLast().getValue() > nextSeqNo) {
+            truncateStartingSeqNo(nextSeqNo);
         } else {
             startingSeqNo.clear();
             startingSeqNo.add(new Pair<Integer, Integer>(
@@ -244,10 +278,10 @@ public class ServiceProxy implements SnapshotListener {
                     throw new IllegalArgumentException("The snapshot is older than previous. " +
                     		"Next: " + nextRequestSeqNo + ", Last: " + lastSnapshotNextSeqNo);
                 }
-                if (nextRequestSeqNo > baseSeqNo) {
+                if (nextRequestSeqNo > nextSeqNo) {
                     // TODO: fix. This exception should not happen
                     logger.warning("The snapshot marked as newer than current state. " +
-                            "nextRequestSeqNo: " + nextRequestSeqNo + ", nextSeqNo: " + baseSeqNo);
+                            "nextRequestSeqNo: " + nextRequestSeqNo + ", nextSeqNo: " + nextSeqNo);
                     return;
 //                    throw new IllegalArgumentException(
 //                            "The snapshot marked as newer than current state. " +
@@ -272,7 +306,7 @@ public class ServiceProxy implements SnapshotListener {
 
                 List<Reply> thisInstanceReplies = responsesCache.get(snapshot.getNextInstanceId());
                 if (thisInstanceReplies == null) {
-                    assert snapshot.getStartingRequestSeqNo() == baseSeqNo;
+                    assert snapshot.getStartingRequestSeqNo() == nextSeqNo;
                     snapshot.setPartialResponseCache(new ArrayList<Reply>(0));
                 } else {
                     int localSkip = snapshot.getNextRequestSeqNo() -

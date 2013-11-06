@@ -28,6 +28,8 @@ public final class ClientRequest implements Serializable {
     private final RequestId requestId;
     private final byte[] value;
 
+    public int seqNo;
+
     /**
      * Creates new <code>Request</code>.
      * 

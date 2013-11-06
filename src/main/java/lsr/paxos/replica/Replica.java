@@ -115,7 +115,9 @@ public class Replica {
     /**
      * Executor service for parallel batch execution
      */
+    private final boolean parallelExecution;
     private ExecutorService execService;
+    private Semaphore instanceRequestsFinished;
 
 
     /**
@@ -153,9 +155,10 @@ public class Replica {
         cache = new ArrayList<Reply>(2048);
         executedDifference.put(executeUB, cache);
 
-        if (config.getBooleanProperty("parallel.batch", false)) {
-            execService = Executors.newCachedThreadPool();
-
+        parallelExecution = config.getBooleanProperty("parallel.batch", false);
+        if (parallelExecution) {
+            execService = Executors.newFixedThreadPool(config.getIntProperty("parallel.batch.workers", 4));
+            instanceRequestsFinished = new Semaphore(1);
         }
     }
 
@@ -266,66 +269,52 @@ public class Replica {
 
         final ClientRequest[] batch = bInfo.batch;
         final int batchLen = batch.length;
-        final boolean isParallel = config.getBooleanProperty("parallel.batch", false);
-        final Future<Void>[] batchFutures = new Future[batchLen];
 
         for (int i = 0; i < batchLen; i++) {
             final ClientRequest cRequest = batch[i];
             final int reqBatchPos = i;
-            if (isParallel) {
-                logger.info("[ParallelBatch] Executing client request in parallel batchPos="+reqBatchPos);
-                batchFutures[reqBatchPos] = execService.submit(new Callable<Void>() {
-                    @Override
-                    public Void call() throws Exception {
-                        innerExecuteClientRequest(instance, bInfo, cRequest, reqBatchPos);
-                        return null;
-                    }
-                });
-            }
-            else {
-                innerExecuteClientRequest(instance, bInfo, cRequest, reqBatchPos);
-            }
-        }
-
-        if (isParallel) {
-            for (Future<Void> req : batchFutures) {
-                try {
-                    req.get();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            if (innerPrepareClientRequest(instance, bInfo, cRequest)) {
+                if (parallelExecution) {
+                    logger.info("[ParallelBatch] Executing client request in parallel batchPos="+reqBatchPos);
+                    execService.execute(new Runnable() {
+                        @Override
+                        public void run() { innerExecuteClientRequest(instance, bInfo, cRequest);
+                        }
+                    });
+                }
+                else {
+                    innerExecuteClientRequest(instance, bInfo, cRequest);
                 }
             }
         }
-
-        serviceProxy.batchExecuted(batchLen);
     }
 
-    private void innerExecuteClientRequest(int instance, ClientBatchInfo bInfo, ClientRequest cRequest, int batchPos) {
+    private final boolean innerPrepareClientRequest(final int instance, final ClientBatchInfo bInfo, ClientRequest cRequest) {
         RequestId rID = cRequest.getRequestId();
         Reply lastReply = executedRequests.get(rID.getClientId());
         if (lastReply != null) {
             int lastSequenceNumberFromClient = lastReply.getRequestId().getSeqNumber();
-
             // Do not execute the same request several times.
             if (rID.getSeqNumber() <= lastSequenceNumberFromClient) {
                 logger.warning("Request ordered multiple times. " +
                         instance + ", batch: " + bInfo.bid + ", " + cRequest + ", lastSequenceNumberFromClient: " + lastSequenceNumberFromClient);
-
-                serviceProxy.alreadyExecuted(batchPos);
-
                 // Send the cached reply back to the client
                 if (rID.getSeqNumber() == lastSequenceNumberFromClient) {
                     requestManager.onRequestExecuted(cRequest, lastReply);
                 }
-                return;
+                return false;
             }
         }
+        if (parallelExecution) instanceRequestsFinished.release();
+        serviceProxy.prepare(cRequest);
+        return true;
+    }
 
+    private void innerExecuteClientRequest(int instance, ClientBatchInfo bInfo, ClientRequest cRequest) {
+        RequestId rID = cRequest.getRequestId();
 
         // Here the replica thread is given to Service.
-        byte[] result = serviceProxy.execute(cRequest, batchPos);
+        byte[] result = serviceProxy.execute(cRequest);
         // Statistics. Count how many requests are in this instance
         requestsInInstance++;
 
@@ -340,6 +329,14 @@ public class Replica {
         cache.add(reply);
 
         executedRequests.put(rID.getClientId(), reply);
+
+        if (parallelExecution) {
+            try {
+                instanceRequestsFinished.acquire();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
         // Can this ever be null?
         assert requestManager != null : "Request manager should not be null";
@@ -370,7 +367,7 @@ public class Replica {
         }
 
         // Here the replica thread is given to Service.
-        byte[] result = serviceProxy.execute(cRequest, /* unused */ -1);
+        byte[] result = serviceProxy.execute(cRequest);
 
         Reply reply = new Reply(cRequest.getRequestId(), result);
 
@@ -398,6 +395,13 @@ public class Replica {
     }
 
     void innerInstanceExecuted(final int instance) {
+        try {
+            instanceRequestsFinished.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        instanceRequestsFinished.release();
+
         if (logger.isLoggable(Level.INFO)) {
             logger.info("Instance finished: " + instance);
         }

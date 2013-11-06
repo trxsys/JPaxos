@@ -9,6 +9,7 @@ import lsr.service.Service;
 
 import java.util.*;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -113,10 +114,6 @@ public class ServiceProxy implements SnapshotListener {
     /** The sequence number of next request passed to service. */
     private volatile int nextSeqNo = 1;
 
-    /** Synchronisation for correct seqNo assignment. */
-    private static final int MAX_REQUESTS_PER_BATCH = 100;
-    private final Semaphore[] batchSem;
-
     /** The sequence number of first request executed after last snapshot. */
     private int lastSnapshotNextSeqNo = -1;
 
@@ -133,7 +130,7 @@ public class ServiceProxy implements SnapshotListener {
     private Queue<Reply> skippedCache;
 
     /** Used for keeping requestId for snapshot purposes. */
-    private ClientRequest currentRequest;
+    private AtomicReference<ClientRequest> currentRequest = new AtomicReference<>(null);
 
     private final Service service;
     private final List<SnapshotListener2> listeners = new ArrayList<SnapshotListener2>();
@@ -154,44 +151,35 @@ public class ServiceProxy implements SnapshotListener {
         service.addSnapshotListener(this);
         this.responsesCache = responsesCache;
         startingSeqNo.add(new Pair<Integer, Integer>(0, /*nextSeqNo*/1));
-        batchSem = new Semaphore[MAX_REQUESTS_PER_BATCH];
-        batchSem[0] = new Semaphore(1);
-        for (int i = 1; i < MAX_REQUESTS_PER_BATCH; i++) batchSem[i] = new Semaphore(0);
     }
 
     /**
-     * Executes the request on underlying service with correct sequence number.
-     * 
+     * Prepares the request for execution.
      *
      * @param request - the request to execute on service
-     * @param batchPos - request's relative position in the batch
+     */
+    public final void prepare(final ClientRequest request) {
+        request.seqNo = nextSeqNo++;
+    }
+    /**
+     * Executes the request on underlying service with correct sequence number.
+     *
+     * @param request - the request to execute on service
      * @return the reply from service
      */
-    public byte[] execute(ClientRequest request, int batchPos) {
-        try {
-            batchSem[batchPos].acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        nextSeqNo++;
-        batchSem[batchPos + 1].release();
+    public byte[] execute(ClientRequest request) {
         if (skip > 0) {
             skip--;
             assert !skippedCache.isEmpty();
             return skippedCache.poll().getValue();
         } else {
-            currentRequest = request;
-            return service.execute(request.getValue(), nextSeqNo - 1);
+            do {
+                final ClientRequest req = currentRequest.get();
+                if (req != null && req.seqNo > request.seqNo) break;
+                if (currentRequest.compareAndSet(req, request)) break;
+            } while (true);
+            return service.execute(request.getValue(), request.seqNo);
         }
-    }
-
-    public void alreadyExecuted(int batchPos) {
-        try {
-            batchSem[batchPos].acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        batchSem[batchPos + 1].release();
     }
 
     /** Update the internal state to reflect the execution of a nop request */
@@ -200,20 +188,6 @@ public class ServiceProxy implements SnapshotListener {
         nextSeqNo++;
     }
 
-    /**
-     * Notifies this service proxy that all requests from the batch have been executed.
-     *
-     * @param nRequests - number of requests in the executed batch
-     */
-    public final void batchExecuted(final int nRequests) {
-        batchSem[0].release();
-        assert batchSem[nRequests].availablePermits() == 1;
-        try {
-            batchSem[nRequests].acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
     /**
      * Notifies this service proxy that all request from specified consensus
      * instance has been executed.
@@ -331,7 +305,7 @@ public class ServiceProxy implements SnapshotListener {
                                             "given with snapshot");
                         }
                         snapshot.getPartialResponseCache().add(
-                                new Reply(currentRequest.getRequestId(), response));
+                                new Reply(currentRequest.get().getRequestId(), response));
                     }
                 }
 

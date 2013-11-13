@@ -395,12 +395,14 @@ public class Replica {
     }
 
     void innerInstanceExecuted(final int instance) {
-        try {
-            instanceRequestsFinished.acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (parallelExecution) {
+            try {
+                instanceRequestsFinished.acquire();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            instanceRequestsFinished.release();
         }
-        instanceRequestsFinished.release();
 
         if (logger.isLoggable(Level.INFO)) {
             logger.info("Instance finished: " + instance);

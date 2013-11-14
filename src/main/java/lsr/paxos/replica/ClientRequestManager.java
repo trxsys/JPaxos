@@ -129,7 +129,7 @@ final public class ClientRequestManager {
                         
                     }
                     break;
-                case P2PREQUEST:
+                case UNORDERED_REQUEST:
                     request = command.getRequest();
                     reqId = request.getRequestId();
 
@@ -153,7 +153,7 @@ final public class ClientRequestManager {
                         pendingRequestsSem.acquire();
                         pendingClientProxies.put(reqId, client);
 
-                        replica.executeSingleP2PClientRequest(request);
+                        replica.executeUnorderedClientRequest(request);
 
                     } else {
 

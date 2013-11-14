@@ -253,6 +253,15 @@ public class Replica {
         });
     }
 
+    public void executeUnorderedClientRequest(final ClientRequest cRequest) {
+        execService.execute(new Runnable() {
+            @Override
+            public void run() {
+                innerExecuteUnorderedClientRequest(cRequest);
+            }
+        });
+    }
+
     /** 
      * Called by the RequestManager when it has the ClientRequest that should be
      * executed next. 
@@ -347,7 +356,7 @@ public class Replica {
      * Called directly from ClientRequestManager bypassing Paxos service
      * @param cRequest - client request
      */
-    public void executeSingleP2PClientRequest(ClientRequest cRequest) {
+    public void innerExecuteUnorderedClientRequest(ClientRequest cRequest) {
         RequestId rID = cRequest.getRequestId();
         Reply lastReply = executedRequests.get(rID.getClientId());
         if (lastReply != null) {
@@ -355,7 +364,7 @@ public class Replica {
 
             // Do not execute the same request several times.
             if (rID.getSeqNumber() <= lastSequenceNumberFromClient) {
-                logger.warning("P2P Request ordered multiple times. " +
+                logger.warning("Unordered request ordered multiple times. " +
                         cRequest + ", lastSequenceNumberFromClient: " + lastSequenceNumberFromClient);
 
                 // Send the cached reply back to the client

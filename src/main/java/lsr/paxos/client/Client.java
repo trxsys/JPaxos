@@ -228,9 +228,9 @@ public class Client {
      * @return reply from service
      * @throws ReplicationException if error occurs while sending request
      */
-    public synchronized byte[] executeP2P(byte[] bytes) throws ReplicationException {
+    public synchronized byte[] executeUnordered(byte[] bytes) throws ReplicationException {
         ClientRequest request = new ClientRequest(nextRequestId(), bytes);
-        ClientCommand command = new ClientCommand(CommandType.P2PREQUEST, request);
+        ClientCommand command = new ClientCommand(CommandType.UNORDERED_REQUEST, request);
 
         long start = System.currentTimeMillis();
 
